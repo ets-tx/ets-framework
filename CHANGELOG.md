@@ -2,100 +2,155 @@
 
 All notable changes to the ETS Framework project are documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+---
 
 ## [1.0.0] - 2025-12-13
 
-### Summary
-Complete rewrite and modernization of the CSS framework, achieving 100% W3C HTML validation and Lighthouse accessibility compliance.
+### What Is This?
 
-### Added
-- **app-framework.css**: New main stylesheet with CSS custom properties
-- **manifest.json**: PWA manifest for installable web app support
-- **robots.txt**: Search engine crawler directives
-- **icon.svg**: Framework icon for favicon and PWA
-- **PHASE-0-AUDIT.md**: Documentation of initial audit findings
-- **PHASE-6-UI-REDESIGN.md**: UI redesign planning notes
-- **RESEARCH-HTML-FOUNDATION.md**: HTML best practices research
-- **.stylelintrc.json**: CSS linting configuration
-- Content Security Policy with instant.page script hash
-- Preconnect hints for external resources (instant.page, placehold.co)
-- Autocomplete attributes on form inputs (email, password)
-- Explicit width/height on images for CLS prevention
+ETS Framework v1.0.0 is a **truly classless CSS framework**. Write semantic HTML, get a styled application. No classes required.
 
-### Changed
-- **Renamed project** from Simple.css to ETS Framework
-- **Moved legacy files** to `legacy/` folder (simple.css, simple-v1.css)
-- **Color system**: New accessible colors with AAA contrast ratios (7:1 for code elements)
-- **Meta tags**: Updated to HTML5 standard (removed trailing slashes on void elements)
-- **Input type**: Changed deprecated `datetime` to `datetime-local`
-- **Heading hierarchy**: Restructured to single H1 per page
-- **apple-mobile-web-app-capable**: Changed to modern `mobile-web-app-capable`
-
-### Removed
-- Trailing slashes on all void elements (`<meta>`, `<link>`, `<img>`, `<input>`, etc.)
-- Invalid `aria-disabled` on anchor elements (replaced with span elements)
-- Invalid Permissions-Policy meta tag (must be HTTP header)
-- Invalid Cross-Origin-Opener-Policy meta tag (must be HTTP header)
-- Redundant ARIA roles on semantic elements
-- Minified CSS files (simple.min.css, simple-v1.min.css)
-- Duplicate package.json file
-
-### Fixed
-- **W3C Validation**: All HTML validation errors and warnings resolved
-- **Table structure**: Fixed colgroup column counts to match actual columns
-- **Contrast ratios**: Fixed all WCAG contrast issues
-  - Code elements: 7:1 ratio (AAA)
-  - Mark elements: Works in both light and dark modes
-  - Text elements: 4.5:1 ratio (AA)
-- **Keyboard accessibility**: Made scrollable regions focusable with tabindex
-- **Form accessibility**: Proper radio button grouping, autocomplete hints
-- **Figure/caption**: Removed redundant caption when figcaption present
-
-### Security
-- Content Security Policy protects against XSS attacks
-- Referrer policy set to `strict-origin-when-cross-origin`
-- Documented server-side headers needed for production:
-  - `Strict-Transport-Security` (HSTS)
-  - `Cross-Origin-Opener-Policy` (COOP)
-  - `Permissions-Policy`
+This release establishes a clean foundation built on [Simple.css](https://simplecss.org/) by Kev Quirk, transformed into a production-ready framework with proper accessibility and validation.
 
 ---
 
-## Development History
+## What We Changed From Simple.css
 
-This section documents the journey from the original Simple.css fork to v1.0.0.
+### The Big Picture
 
-### Phase 0: Initial Audit
-- Forked from Simple.css by Kev Quirk
-- Identified accessibility gaps and W3C validation issues
-- Created audit documentation
-
-### Phase 1-5: Core Development
-- Developed new color system with CSS custom properties
-- Implemented dark mode with proper contrast
-- Built responsive grid and layout system
-- Added form styling with accessibility focus
-
-### Phase 6: UI Redesign & Validation
-- Complete W3C HTML validation pass
-- Lighthouse accessibility audit (100% score achievable)
-- Security hardening with CSP
-- Performance optimization with preconnect hints
-
-### Key Decisions
-1. **Classless approach**: Minimal classes, semantic HTML styling
-2. **CSS Custom Properties**: Easy theming and dark mode
-3. **Mobile-first**: Responsive design from small screens up
-4. **Accessibility-first**: WCAG AA minimum, AAA where practical
-5. **Valid HTML**: Strict W3C compliance over convenience
+We took Simple.css and made it:
+- **Truly classless** — removed all utility classes except `.visually-hidden` (required for accessibility)
+- **Fully validated** — passes W3C HTML validation
+- **Accessibility compliant** — WCAG AA contrast ratios, keyboard navigation, screen reader support
+- **Production ready** — security headers, performance hints, PWA support
 
 ---
 
-## [0.0.0] - Initial Fork
+### Classes: Before & After
 
-### Origin
-- Forked from [Simple.css](https://simplecss.org/) by Kev Quirk
-- MIT License maintained
-- Original files preserved in `legacy/` folder
+**Simple.css had these classes:**
+- `.notice` — callout boxes
+- `.button` — make links look like buttons
+- `.current` — highlight current nav item
+
+**ETS Framework has ONE class:**
+- `.visually-hidden` — hides content visually but keeps it accessible to screen readers (required for skip links, no HTML alternative exists)
+
+**Why remove the others?**
+- `.notice` → Use `<aside>` or `<blockquote>` instead (semantic HTML)
+- `.button` → If you need a button, use `<button>`. Links should look like links.
+- `.current` → Use `[aria-current="page"]` attribute instead (semantic HTML)
+
+---
+
+### HTML Fixes
+
+**Fixed invalid HTML:**
+- Removed trailing slashes on void elements (`<meta>`, `<link>`, `<img>`, etc.) — HTML5 doesn't use them
+- Changed `checked="checked"` to just `checked` (boolean attributes don't need values)
+- Changed `multiple="multiple"` to just `multiple`
+- Fixed `http://` links to `https://`
+- Removed redundant `for` attributes when label wraps input
+
+**Fixed deprecated elements:**
+- Changed `<input type="datetime">` to `<input type="datetime-local">`
+- Changed `apple-mobile-web-app-capable` to `mobile-web-app-capable`
+
+**Fixed document structure:**
+- Single `<h1>` per page (proper heading hierarchy)
+- Removed redundant ARIA roles on semantic elements
+- Fixed table column counts to match actual data
+
+---
+
+### Accessibility Improvements
+
+**Contrast ratios (WCAG AA/AAA):**
+- Regular text: 4.5:1 ratio (AA compliant)
+- Code elements: 7:1 ratio (AAA compliant)
+- Works in both light and dark modes
+
+**Keyboard navigation:**
+- All interactive elements are focusable
+- Visible focus indicators (3px accent color outline)
+- Skip links for main content and navigation
+- Scrollable regions have `tabindex="0"`
+
+**Screen readers:**
+- ARIA live regions for dynamic announcements
+- Proper form labeling
+- Radio/checkbox groups work correctly
+
+---
+
+### Security Additions
+
+**Content Security Policy:**
+- Protects against XSS attacks
+- Whitelist for trusted scripts (instant.page)
+
+**Other security:**
+- Referrer policy: `strict-origin-when-cross-origin`
+- Documented server headers needed for production (HSTS, COOP, Permissions-Policy)
+
+---
+
+### Performance Additions
+
+- Preconnect hints for external resources
+- DNS prefetch for faster connections
+- Explicit image dimensions prevent layout shift
+- instant.page for near-instant page loads
+
+---
+
+### New Files
+
+| File | Purpose |
+|------|---------|
+| `app-framework.css` | The main (and only) stylesheet you need |
+| `manifest.json` | PWA manifest for installable web apps |
+| `robots.txt` | Search engine directives |
+| `icon.svg` | Framework icon |
+| `legacy/` | Original Simple.css files (for reference) |
+
+---
+
+### What We Kept
+
+- **CSS Custom Properties** — Easy theming via `--accent`, `--bg`, `--text`, etc.
+- **Automatic dark mode** — Respects `prefers-color-scheme`
+- **Responsive design** — Mobile-first, works on any screen size
+- **Print styles** — Pages print cleanly
+- **MIT License** — Same open license as Simple.css
+
+---
+
+## The Philosophy
+
+**Classless means:**
+1. You write semantic HTML (`<header>`, `<nav>`, `<main>`, `<article>`, etc.)
+2. The CSS styles those elements automatically
+3. No need to memorize class names or check documentation
+
+**The only exception:**
+`.visually-hidden` exists because there's no HTML element that means "hide this visually but let screen readers see it." It's an accessibility requirement, not a styling choice.
+
+---
+
+## Credits
+
+- **Original**: [Simple.css](https://simplecss.org/) by Kev Quirk (MIT License)
+- **This version**: ETS Framework by ETS-TX (Bryan A Counts)
+- **Demo structure**: Based on [HTML5-test-page](https://github.com/cbracco/html5-test-page) by cbracco
+
+---
+
+## What's Next
+
+This v1.0.0 release is the **clean foundation**. Future versions may add:
+- High contrast mode for challenging environments
+- Additional CSS custom properties for theming
+- Video-optimized styling for LMS applications
+
+But the core philosophy stays the same: **write semantic HTML, get a styled application.**

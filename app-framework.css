@@ -242,9 +242,6 @@ a:hover {
 }
 
 button,
-.button,
-a.button,
-/* extra specificity to override a */
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
@@ -257,7 +254,6 @@ input[type="button"] {
 	touch-action: manipulation;
 }
 
-.button[aria-disabled="true"],
 input:disabled,
 textarea:disabled,
 select:disabled,
@@ -280,7 +276,6 @@ abbr[title] {
 }
 
 button:enabled:hover,
-.button:not([aria-disabled="true"]):hover,
 input[type="submit"]:enabled:hover,
 input[type="reset"]:enabled:hover,
 input[type="button"]:enabled:hover {
@@ -289,7 +284,6 @@ input[type="button"]:enabled:hover {
 	cursor: pointer;
 }
 
-.button:focus-visible,
 button:focus-visible:where(:enabled),
 input:enabled:focus-visible:where([type="submit"], [type="reset"], [type="button"]) {
 	outline: 3px solid var(--accent);
@@ -335,7 +329,6 @@ header nav a:visited {
 }
 
 header nav a:hover,
-header nav a.current,
 header nav a[aria-current="page"],
 header nav a[aria-current="true"] {
 	border-color: var(--accent);
@@ -480,8 +473,7 @@ table caption {
 textarea,
 select,
 input,
-button,
-.button {
+button {
 	font-size: inherit;
 	font-family: inherit;
 	padding: 0.5em;
@@ -739,24 +731,6 @@ sub {
 	top: 0.3em;
 }
 
-/* Demo class for aside styling (when semantic aside can't be used) */
-.aside-demo {
-	background-color: var(--accent-bg);
-	border: var(--border-width) solid var(--border);
-	border-radius: var(--standard-border-radius);
-	font-size: 1rem;
-	padding: 0 15px;
-}
-
-/* Classes for notices */
-.notice {
-	background: var(--accent-bg);
-	border: var(--border-width) solid var(--border);
-	border-radius: var(--standard-border-radius);
-	padding: 1.5rem;
-	margin: 2rem 0;
-}
-
 /* Accessibility: Visually hidden (screen reader accessible) */
 .visually-hidden {
 	position: absolute;
@@ -808,8 +782,7 @@ sub {
 
 /* Desktop enhancements */
 @media (min-width: 720px) {
-	aside,
-	.aside-demo {
+	aside {
 		width: 30%;
 		margin-inline-start: 15px;
 		float: right;

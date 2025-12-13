@@ -1,26 +1,16 @@
 # ETS Framework
 
-A lightweight, classless CSS framework optimized for modern web applications. Built for video-heavy LMS platforms and admin dashboards, ETS Framework provides accessible, performant styling without requiring CSS classes.
+A lightweight, classless CSS framework for modern web applications. Built on Simple.css, ETS Framework provides accessible, responsive styling using only semantic HTML.
 
 ## Features
 
-- **Classless**: Write semantic HTML, get a beautiful application
-- **Video-Optimized**: Native support for fullscreen, picture-in-picture, and captions
-- **Accessible**: WCAG AA/AAA compliant with three display modes (Light, Dark, High Contrast)
-- **Mobile-First**: Optimized for blue-collar workers on job sites with challenging conditions
-- **Lightweight**: Under 20KB, optimized for poor network conditions
-- **No Dependencies**: Pure CSS, no JavaScript required
-- **Modern**: CSS variables, logical properties, oklch colors, container queries
+- **Classless**: Write semantic HTML, get styled output — no classes needed
+- **Accessible**: WCAG compliant with automatic light/dark mode support
+- **Responsive**: Mobile-first design that works on any device
+- **Lightweight**: Single CSS file, no JavaScript required
+- **Modern**: CSS variables for easy customization
 
 ## Quick Start
-
-### NPM
-
-```bash
-npm install ets-framework
-```
-
-### Local Installation
 
 Download `app-framework.css` and include it in your HTML:
 
@@ -73,28 +63,22 @@ Override CSS variables to customize the framework:
 
 ```css
 :root {
-    --color-accent: oklch(50% 0.15 250);
-    --color-background: oklch(100% 0 0);
-    --font-size-base: 1rem;
+    --accent: #0d47a1;
+    --bg: #fff;
+    --text: #212121;
 }
 ```
 
 ## Display Modes
 
-ETS Framework automatically supports three display modes:
+ETS Framework automatically adapts to user preferences:
 
-- **Light Mode**: Default, optimized for well-lit environments
+- **Light Mode**: Default
 - **Dark Mode**: Activates via `prefers-color-scheme: dark`
-- **High Contrast**: Activates via `prefers-contrast: more` for challenging conditions
 
 ## Browser Support
 
-Supports Safari 17.4+, Chrome 120+, Firefox 120+, Edge 120+ (95% global coverage)
-
-Optimized for:
-- Mobile Safari on older iOS devices
-- Firefox (blue-collar demographic)
-- Chrome on budget Android devices
+Modern browsers with CSS variable support (Chrome, Firefox, Safari, Edge).
 
 ## Files Included
 
