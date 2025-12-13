@@ -151,9 +151,6 @@
 	     HEADER
 	     ============================================ -->
 		<header aria-label="Site header">
-			<nav aria-label="Theme switcher">
-				<small><a href="#light">Light</a> · <a href="#dark">Dark</a> · <a href="#high-contrast">High Contrast</a></small>
-			</nav>
 			<h1>ETS Framework Test Page</h1>
 			<p>This is a test page filled with common HTML elements to demonstrate the framework's styling capabilities.</p>
 
@@ -166,73 +163,80 @@
 					<li><a href="https://github.com/ets-tx/ets-framework" target="_blank" rel="noopener noreferrer">GitHub</a></li>
 				</ul>
 			</nav>
+			<nav aria-label="Theme switcher">
+				<ul>
+					<li><a href="#light">Light</a></li>
+					<li><a href="#dark">Dark</a></li>
+					<li><a href="#high-contrast">High Contrast</a></li>
+				</ul>
+			</nav>
 		</header>
-
-		<!-- ============================================
-	     TABLE OF CONTENTS NAVIGATION
-	     Organized to match CSS cascade layer structure
-	     ============================================ -->
-		<nav aria-label="Table of contents">
-			<ul>
-				<li>
-					<a href="#base">Base typography and layout</a>
-					<ul>
-						<li><a href="#base__headings">Headings</a></li>
-						<li><a href="#base__paragraphs">Paragraphs</a></li>
-						<li><a href="#base__lists">Lists</a></li>
-						<li><a href="#base__blockquotes">Blockquotes</a></li>
-						<li><a href="#base__asides">Asides</a></li>
-						<li><a href="#base__details">Details and summary</a></li>
-						<li><a href="#base__address">Address</a></li>
-						<li><a href="#base__hr">Horizontal rules</a></li>
-						<li><a href="#base__tables">Tabular data</a></li>
-						<li><a href="#base__code">Code</a></li>
-						<li><a href="#base__sections">Sections</a></li>
-						<li><a href="#base__inline">Inline elements</a></li>
-						<li><a href="#base__comments">HTML comments</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#media">Media and embedded content</a>
-					<ul>
-						<li><a href="#media__images">Images</a></li>
-						<li><a href="#media__bgimages">Background images</a></li>
-						<li><a href="#media__audio">Audio</a></li>
-						<li><a href="#media__video">Video</a></li>
-						<li><a href="#media__canvas">Canvas</a></li>
-						<li><a href="#media__meter">Meter</a></li>
-						<li><a href="#media__progress">Progress</a></li>
-						<li><a href="#media__svg">Inline SVG</a></li>
-						<li><a href="#media__iframe">iframes</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#interactive">Forms and interactive elements</a>
-					<ul>
-						<li><a href="#interactive__input">Input fields</a></li>
-						<li><a href="#interactive__select">Select menus</a></li>
-						<li><a href="#interactive__checkbox">Checkboxes</a></li>
-						<li><a href="#interactive__radio">Radio buttons</a></li>
-						<li><a href="#interactive__textareas">Textareas</a></li>
-						<li><a href="#interactive__html5">HTML5 inputs</a></li>
-						<li><a href="#interactive__action">Action buttons</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#utilities">Accessibility</a>
-					<ul>
-						<li><a href="#utilities__visually-hidden">.visually-hidden</a></li>
-						<li><a href="#utilities__dark-mode">Automatic Dark Mode</a></li>
-						<li><a href="#utilities__keyboard">Keyboard Navigation</a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav>
 
 		<!-- ============================================
 	     MAIN CONTENT
 	     ============================================ -->
 		<main id="main" aria-label="Main content">
+			<!-- Table of contents - collapsed by default -->
+			<details>
+				<summary>Table of contents</summary>
+				<nav aria-label="Table of contents">
+					<ul>
+						<li>
+							<a href="#base">Base typography and layout</a>
+							<ul>
+								<li><a href="#base__headings">Headings</a></li>
+								<li><a href="#base__paragraphs">Paragraphs</a></li>
+								<li><a href="#base__lists">Lists</a></li>
+								<li><a href="#base__blockquotes">Blockquotes</a></li>
+								<li><a href="#base__asides">Asides</a></li>
+								<li><a href="#base__details">Details and summary</a></li>
+								<li><a href="#base__address">Address</a></li>
+								<li><a href="#base__hr">Horizontal rules</a></li>
+								<li><a href="#base__tables">Tabular data</a></li>
+								<li><a href="#base__code">Code</a></li>
+								<li><a href="#base__sections">Sections</a></li>
+								<li><a href="#base__inline">Inline elements</a></li>
+								<li><a href="#base__comments">HTML comments</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#media">Media and embedded content</a>
+							<ul>
+								<li><a href="#media__images">Images</a></li>
+								<li><a href="#media__bgimages">Background images</a></li>
+								<li><a href="#media__audio">Audio</a></li>
+								<li><a href="#media__video">Video</a></li>
+								<li><a href="#media__canvas">Canvas</a></li>
+								<li><a href="#media__meter">Meter</a></li>
+								<li><a href="#media__progress">Progress</a></li>
+								<li><a href="#media__svg">Inline SVG</a></li>
+								<li><a href="#media__iframe">iframes</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#interactive">Forms and interactive elements</a>
+							<ul>
+								<li><a href="#interactive__input">Input fields</a></li>
+								<li><a href="#interactive__select">Select menus</a></li>
+								<li><a href="#interactive__checkbox">Checkboxes</a></li>
+								<li><a href="#interactive__radio">Radio buttons</a></li>
+								<li><a href="#interactive__textareas">Textareas</a></li>
+								<li><a href="#interactive__html5">HTML5 inputs</a></li>
+								<li><a href="#interactive__action">Action buttons</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#utilities">Accessibility</a>
+							<ul>
+								<li><a href="#utilities__visually-hidden">.visually-hidden</a></li>
+								<li><a href="#utilities__dark-mode">Automatic Dark Mode</a></li>
+								<li><a href="#utilities__keyboard">Keyboard Navigation</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</details>
+
 			<!-- ============================================
 		     BASE TYPOGRAPHY & LAYOUT
 		     Semantic HTML elements and text formatting
