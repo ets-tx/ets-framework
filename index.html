@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en" dir="ltr" id="light">
 	<head>
 		<!-- ============================================
 	     CHARACTER ENCODING & VIEWPORT (Must be first)
@@ -130,6 +130,12 @@
 
 	<body id="top">
 		<!-- ============================================
+	     THEME SWITCHER (CSS-only via :target)
+	     ============================================ -->
+		<span id="dark"></span>
+		<span id="high-contrast"></span>
+
+		<!-- ============================================
 	     SKIP NAVIGATION (WCAG 2.4.1)
 	     ============================================ -->
 		<a href="#main" class="visually-hidden">Skip to main content</a>
@@ -145,6 +151,9 @@
 	     HEADER
 	     ============================================ -->
 		<header aria-label="Site header">
+			<nav aria-label="Theme switcher">
+				<small><a href="#light">Light</a> · <a href="#dark">Dark</a> · <a href="#high-contrast">High Contrast</a></small>
+			</nav>
 			<h1>ETS Framework Test Page</h1>
 			<p>This is a test page filled with common HTML elements to demonstrate the framework's styling capabilities.</p>
 
