@@ -40,12 +40,12 @@
 		--accent: #ffb300;
 		--accent-hover: #ffe099;
 		--accent-text: var(--bg);
-		--code: #ffc1e3; /* Light pink - 10.73:1 contrast (AAA) */
-		--preformatted: #f0f0f0; /* Very light gray - 14.13:1 contrast (AAA) */
-		--marked: #fdba74; /* Light orange - 9.55:1 contrast (AAA) */
+		--code: #ffc1e3;
+		--preformatted: #f0f0f0;
+		--marked: #fdba74;
 		--disabled: #111;
 	}
-	/* Add a bit of transparency so light media isn't so glaring in dark mode */
+
 	img,
 	video {
 		opacity: 0.8;
@@ -59,7 +59,6 @@
 	box-sizing: border-box;
 }
 
-/* Remove tap highlight on mobile (replace with better visual feedback) */
 * {
 	-webkit-tap-highlight-color: transparent;
 }
@@ -100,6 +99,7 @@ body {
 	grid-template-columns: 1fr min(45rem, 90%) 1fr;
 	margin: 0;
 }
+
 body > * {
 	grid-column: 2;
 }
@@ -230,25 +230,6 @@ h3 {
 	line-height: 1.1;
 }
 
-/* Reduce header size on mobile */
-@media only screen and (max-width: 720px) {
-	h1 {
-		font-size: 2.5rem;
-	}
-
-	h2 {
-		font-size: 2.1rem;
-	}
-
-	h3 {
-		font-size: 1.75rem;
-	}
-
-	h4 {
-		font-size: 1.25rem;
-	}
-}
-
 /* Format links & buttons */
 a,
 a:visited {
@@ -262,7 +243,8 @@ a:hover {
 
 button,
 .button,
-a.button, /* extra specificity to override a */
+a.button,
+/* extra specificity to override a */
 input[type="submit"],
 input[type="reset"],
 input[type="button"] {
@@ -284,14 +266,13 @@ button[disabled] {
 	background-color: var(--disabled);
 	border-color: var(--disabled);
 	color: var(--text-light);
-	pointer-events: none; /* Prevent all interaction */
+	pointer-events: none;
 }
 
 input[type="range"] {
 	padding: 0;
 }
 
-/* Set the cursor to '?' on an abbreviation and style the abbreviation to show that there is more information underneath */
 abbr[title] {
 	cursor: help;
 	text-decoration-line: underline;
@@ -362,16 +343,6 @@ header nav a[aria-current="true"] {
 	cursor: pointer;
 }
 
-/* Reduce nav side on mobile */
-@media only screen and (max-width: 720px) {
-	header nav a {
-		border: none;
-		padding: 0;
-		text-decoration: underline;
-		line-height: 1;
-	}
-}
-
 /* Consolidate box styling */
 aside,
 details,
@@ -388,22 +359,7 @@ progress {
 
 aside {
 	font-size: 1rem;
-	width: 30%;
 	padding: 0 15px;
-	margin-inline-start: 15px;
-	float: right;
-}
-*[dir="rtl"] aside {
-	float: left;
-}
-
-/* Make aside full-width on mobile */
-@media only screen and (max-width: 720px) {
-	aside {
-		width: 100%;
-		float: none;
-		margin-inline-start: 0;
-	}
 }
 
 article,
@@ -447,7 +403,7 @@ section:last-child {
 
 details {
 	padding: 0.7rem 1rem;
-	overflow: visible; /* Critical: Allow summary outline to show */
+	overflow: visible;
 }
 
 summary {
@@ -457,46 +413,18 @@ summary {
 	margin: -0.7rem -1rem;
 	word-break: break-all;
 	touch-action: manipulation;
-	/* Critical: Prevent browser from hiding outline */
 	outline-color: transparent;
-	position: relative; /* Create stacking context for outline */
+	position: relative;
 }
 
-/* WCAG 2.4.7: Ensure summary shows visible focus indicator on keyboard navigation
-   Chrome/Safari bug: Some browsers hide outline on summary by default
-   Fix: Force outline visibility and prevent browser defaults from hiding it */
-summary:focus {
-	outline: 3px solid var(--accent) !important;
-	outline-offset: 2px !important;
-	outline-color: var(--accent) !important;
-	z-index: 1; /* Ensure outline appears above parent */
-}
-
-summary:focus-visible {
-	outline: 3px solid var(--accent) !important;
-	outline-offset: 2px !important;
-	outline-color: var(--accent) !important;
-	z-index: 1;
-}
-
-/* Also ensure it works when details is open */
-details[open] > summary:focus {
-	outline: 3px solid var(--accent) !important;
-	outline-offset: 2px !important;
-	outline-color: var(--accent) !important;
-	z-index: 1;
-}
-
+/* WCAG 2.4.7: Force visible focus on summary (browser bug workaround) */
+summary:focus,
+summary:focus-visible,
+details[open] > summary:focus,
 details[open] > summary:focus-visible {
 	outline: 3px solid var(--accent) !important;
 	outline-offset: 2px !important;
-	outline-color: var(--accent) !important;
 	z-index: 1;
-}
-
-/* Prevent webkit from hiding the focus outline */
-summary::-webkit-details-marker {
-	/* Don't interfere with focus */
 }
 
 details[open] > summary + * {
@@ -540,7 +468,6 @@ th {
 }
 
 tr:nth-child(even) {
-	/* Set every other cell slightly darker. Improves readability. */
 	background-color: var(--accent-bg);
 }
 
@@ -564,18 +491,18 @@ button,
 	max-width: 100%;
 	display: inline-block;
 }
+
 textarea,
 select,
 input {
 	color: var(--text);
 	background-color: var(--bg);
 	border: var(--border-width) solid var(--border);
+	width: 100%;
 }
+
 label {
 	display: block;
-}
-textarea:not([cols]) {
-	width: 100%;
 }
 
 /* Add arrow to drop-down */
@@ -586,6 +513,7 @@ select:not([multiple]) {
 	background-repeat: no-repeat;
 	padding-inline-end: 25px;
 }
+
 *[dir="rtl"] select:not([multiple]) {
 	background-position: 10px, 15px;
 }
@@ -613,7 +541,6 @@ input[type="radio"]:checked {
 }
 
 input[type="checkbox"]:checked::after {
-	/* Creates a rectangle with colored right and bottom borders which is rotated to look like a check mark */
 	content: " ";
 	width: 0.2em;
 	height: 0.4em;
@@ -627,8 +554,8 @@ input[type="checkbox"]:checked::after {
 	font-size: 1.8em;
 	transform: rotate(45deg);
 }
+
 input[type="radio"]:checked::after {
-	/* creates a colored circle for the checked radio button  */
 	content: " ";
 	width: 0.3em;
 	height: 0.3em;
@@ -640,22 +567,12 @@ input[type="radio"]:checked::after {
 	font-size: 1.8em;
 }
 
-/* Makes input fields wider on smaller screens */
-@media only screen and (max-width: 720px) {
-	textarea,
-	select,
-	input {
-		width: 100%;
-	}
-}
-
 /* Set a height for color input */
 input[type="color"] {
 	height: 2.5rem;
 	padding: 0.2rem;
 }
 
-/* do not show border around file selector button */
 input[type="file"] {
 	border: 0;
 }
@@ -672,18 +589,16 @@ mark {
 	padding: 2px 5px;
 	border-radius: var(--standard-border-radius);
 	background-color: var(--marked);
-	color: #212121; /* Always dark text for contrast on light backgrounds */
+	color: #212121;
 }
 
 mark a {
-	color: #0d47a1; /* Blue link for visibility */
+	color: #0d47a1;
 	text-decoration: underline;
 }
 
 img,
 video {
-	max-width: 100%;
-	height: auto;
 	border-radius: var(--standard-border-radius);
 }
 
@@ -699,19 +614,17 @@ canvas {
 figure {
 	margin: 0;
 	display: block;
-	overflow: visible; /* CRITICAL! Allows child focus outlines to show */
+	overflow: visible;
 }
 
 figure > img,
 figure > picture > img {
 	display: block;
-	margin-inline: auto;
 }
 
 figcaption {
 	position: sticky;
 	left: 0;
-	text-align: center;
 	font-size: 0.9rem;
 	color: var(--text-light);
 	margin-block: 1rem;
@@ -771,8 +684,6 @@ pre code {
 }
 
 /* Progress bars */
-/* Declarations are repeated because you */
-/* cannot combine vendor-specific selectors */
 progress {
 	width: 100%;
 }
@@ -813,14 +724,7 @@ dialog::backdrop {
 	opacity: 0.8;
 }
 
-@media only screen and (max-width: 720px) {
-	dialog {
-		max-width: calc(100vw - 2rem);
-	}
-}
-
 /* Superscript & Subscript */
-/* Prevent scripts from affecting line-height. */
 sup,
 sub {
 	vertical-align: baseline;
@@ -833,6 +737,15 @@ sup {
 
 sub {
 	top: 0.3em;
+}
+
+/* Demo class for aside styling (when semantic aside can't be used) */
+.aside-demo {
+	background-color: var(--accent-bg);
+	border: var(--border-width) solid var(--border);
+	border-radius: var(--standard-border-radius);
+	font-size: 1rem;
+	padding: 0 15px;
 }
 
 /* Classes for notices */
@@ -893,6 +806,20 @@ sub {
 	background: var(--text-light);
 }
 
+/* Desktop enhancements */
+@media (min-width: 720px) {
+	aside,
+	.aside-demo {
+		width: 30%;
+		margin-inline-start: 15px;
+		float: right;
+	}
+
+	*[dir="rtl"] aside {
+		float: left;
+	}
+}
+
 /* Print page margins (must be top-level, cannot be nested in @media) */
 @page {
 	margin: 1cm;
@@ -903,36 +830,46 @@ sub {
 	body {
 		display: block;
 	}
+
 	body > header {
 		background-color: unset;
 	}
+
 	body > header nav,
 	body > footer {
 		display: none;
 	}
+
 	article {
 		border: none;
 		padding: 0;
 	}
+
 	a[href^="http"]::after {
 		content: " <" attr(href) ">";
 	}
+
 	abbr[title]:after {
 		content: " (" attr(title) ")";
 	}
+
 	a {
 		text-decoration: none;
 	}
+
 	p {
 		widows: 3;
 		orphans: 3;
 	}
+
 	hr {
 		border-top: var(--border-width) solid var(--border);
 	}
+
 	mark {
 		border: var(--border-width) solid var(--border);
 	}
+
 	pre,
 	table,
 	figure,
@@ -940,6 +877,7 @@ sub {
 	svg {
 		break-inside: avoid;
 	}
+
 	pre code {
 		white-space: pre-wrap;
 	}
