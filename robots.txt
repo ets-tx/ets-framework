@@ -1,0 +1,7 @@
+# robots.txt for ETS Framework
+User-agent: *
+Allow: /
+
+Sitemap: https://github.com/ets-tx/ets-framework/sitemap.xml
+
+

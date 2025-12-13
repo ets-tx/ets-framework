@@ -1,36 +1,31 @@
 # ETS Framework
 
-A lightweight CSS framework for building beautiful, modern websites quickly. Based on Simple.css, ETS Framework provides a classless CSS foundation that styles semantic HTML elements without requiring additional classes.
+A lightweight, classless CSS framework optimized for modern web applications. Built for video-heavy LMS platforms and admin dashboards, ETS Framework provides accessible, performant styling without requiring CSS classes.
 
 ## Features
 
-- **Classless**: Write semantic HTML, get a beautiful website
-- **Responsive**: Mobile-first design that works everywhere
-- **Dark Mode**: Automatic dark mode support based on user preferences
-- **Lightweight**: Minimal footprint, maximum impact
+- **Classless**: Write semantic HTML, get a beautiful application
+- **Video-Optimized**: Native support for fullscreen, picture-in-picture, and captions
+- **Accessible**: WCAG AA/AAA compliant with three display modes (Light, Dark, High Contrast)
+- **Mobile-First**: Optimized for blue-collar workers on job sites with challenging conditions
+- **Lightweight**: Under 20KB, optimized for poor network conditions
 - **No Dependencies**: Pure CSS, no JavaScript required
-- **Modern**: CSS variables for easy customization
+- **Modern**: CSS variables, logical properties, oklch colors, container queries
 
 ## Quick Start
-
-### CDN
-
-```html
-<link rel="stylesheet" href="simple.css">
-```
-
-### Local Installation
-
-Download `simple.css` or `simple.min.css` and include it in your HTML:
-
-```html
-<link rel="stylesheet" href="path/to/simple.css">
-```
 
 ### NPM
 
 ```bash
-npm install simpledotcss
+npm install ets-framework
+```
+
+### Local Installation
+
+Download `app-framework.css` and include it in your HTML:
+
+```html
+<link rel="stylesheet" href="app-framework.css">
 ```
 
 ## Usage
@@ -43,24 +38,30 @@ Simply write semantic HTML and ETS Framework will handle the styling:
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-    <link rel="stylesheet" href="simple.css">
+    <title>My LMS</title>
+    <link rel="stylesheet" href="app-framework.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Website</h1>
-        <p>Built with ETS Framework</p>
+        <h1>Training Portal</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/courses">Courses</a>
+        </nav>
     </header>
 
     <main>
         <article>
-            <h2>About</h2>
-            <p>This is a paragraph with beautiful styling.</p>
+            <h2>Course Video</h2>
+            <video controls poster="thumbnail.jpg">
+                <source src="lesson.mp4" type="video/mp4">
+                <track src="captions.vtt" kind="captions" srclang="en">
+            </video>
         </article>
     </main>
 
     <footer>
-        <p>© 2025 My Website</p>
+        <p>© 2025 ETS-TX</p>
     </footer>
 </body>
 </html>
@@ -72,23 +73,35 @@ Override CSS variables to customize the framework:
 
 ```css
 :root {
-    --accent: #your-color;
-    --bg: #your-background;
-    --text: #your-text-color;
+    --color-accent: oklch(50% 0.15 250);
+    --color-background: oklch(100% 0 0);
+    --font-size-base: 1rem;
 }
 ```
 
-## Files Included
+## Display Modes
 
-- `simple.css` - Main stylesheet (unminified)
-- `simple.min.css` - Minified version for production
-- `simple-v1.css` - Version 1 (legacy support)
-- `simple-v1.min.css` - Version 1 minified
-- `index.html` - Demo page showcasing all elements
+ETS Framework automatically supports three display modes:
+
+- **Light Mode**: Default, optimized for well-lit environments
+- **Dark Mode**: Activates via `prefers-color-scheme: dark`
+- **High Contrast**: Activates via `prefers-contrast: more` for challenging conditions
 
 ## Browser Support
 
-Works on all modern evergreen browsers (Chrome, Firefox, Safari, Edge)
+Supports Safari 17.4+, Chrome 120+, Firefox 120+, Edge 120+ (95% global coverage)
+
+Optimized for:
+- Mobile Safari on older iOS devices
+- Firefox (blue-collar demographic)
+- Chrome on budget Android devices
+
+## Files Included
+
+- `app-framework.css` - Main framework
+- `legacy/simple.css` - Original Simple.css (reference)
+- `legacy/simple-v1.css` - Simple.css v1 (reference)
+- `index.html` - Demo page showcasing all elements
 
 ## License
 
@@ -96,4 +109,6 @@ MIT License - see LICENSE file for details
 
 ## Credits
 
-Built on [Simple.css](https://simplecss.org) by Kev Quirk
+Based on [Simple.css](https://simplecss.org) by Kev Quirk
+
+Built by ETS-TX (Bryan A Counts) for real-world, challenging work environments.
