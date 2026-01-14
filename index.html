@@ -1,1296 +1,1142 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" id="light">
-	<head>
-		<!-- ============================================
-	     CHARACTER ENCODING & VIEWPORT (Must be first)
+<html lang="en" dir="ltr" class="no-js">
+<head>
+	<!-- ============================================
+	     CHARACTER ENCODING & VIEWPORT
 	     ============================================ -->
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-		<!-- ============================================
+	<!-- ============================================
 	     TITLE & DESCRIPTION
 	     ============================================ -->
-		<title>ETS Framework Test Page | Accessible CSS Framework for Modern Apps</title>
-		<meta name="description" content="ETS Framework demo showcasing accessible, classless CSS for video-heavy LMS and admin applications. Optimized for mobile-first, challenging work environments.">
-		<meta name="author" content="ETS-TX (Bryan A Counts)">
+	<title>ETS-TX v26.0α | Admin UI Style Guide</title>
+	<meta name="description" content="ETS-TX demo and style guide. A modern, accessible CSS framework for admin interfaces and LMS applications. WCAG 2.1 AA compliant.">
+	<meta name="author" content="ETS-TX (Bryan A Counts)">
 
-		<!-- ============================================
+	<!-- ============================================
 	     SECURITY
 	     ============================================ -->
-		<!-- Content Security Policy -->
-		<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; media-src 'self' https:; img-src 'self' data: https:; script-src 'self' https://instant.page 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE='; connect-src 'self' https:;">
-		<meta name="referrer" content="strict-origin-when-cross-origin">
-		<!-- Note: The following security headers MUST be set via HTTP headers on the server, not meta tags:
-		     - Strict-Transport-Security: max-age=31536000; includeSubDomains
-		     - Cross-Origin-Opener-Policy: same-origin
-		     - Permissions-Policy: geolocation=(), microphone=(), camera=(self), fullscreen=(self), picture-in-picture=(self)
-		-->
+	<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; script-src 'self' 'sha256-vvt4KWwuNr51XfE5m+hzeNEGhiOfZzG97ccfqGsPwvE=';">
+	<meta name="referrer" content="strict-origin-when-cross-origin">
 
-		<!-- ============================================
+	<!-- ============================================
 	     SEO & INDEXING
 	     ============================================ -->
-		<link rel="canonical" href="https://github.com/ets-tx/ets-framework">
-		<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+	<link rel="canonical" href="https://github.com/ets-tx/ets-framework">
+	<meta name="robots" content="index, follow">
 
-		<!-- ============================================
-	     OPEN GRAPH (Facebook, LinkedIn, Slack)
+	<!-- ============================================
+	     OPEN GRAPH
 	     ============================================ -->
-		<meta property="og:title" content="ETS Framework Test Page">
-		<meta property="og:description" content="Accessible, classless CSS framework for video-heavy LMS and admin applications">
-		<meta property="og:type" content="website">
-		<meta property="og:url" content="https://github.com/ets-tx/ets-framework">
-		<meta property="og:site_name" content="ETS Framework">
-		<meta property="og:locale" content="en_US">
+	<meta property="og:title" content="ETS-TX v26.0α | Admin UI Style Guide">
+	<meta property="og:description" content="Modern, accessible CSS framework for admin interfaces">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="https://github.com/ets-tx/ets-framework">
 
-		<!-- ============================================
+	<!-- ============================================
 	     TWITTER CARDS
 	     ============================================ -->
-		<meta name="twitter:card" content="summary_large_image">
-		<meta name="twitter:title" content="ETS Framework Test Page">
-		<meta name="twitter:description" content="Accessible, classless CSS framework for modern apps">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:title" content="ETS-TX v26.0α">
+	<meta name="twitter:description" content="Modern, accessible CSS framework for admin interfaces">
 
-		<!-- ============================================
+	<!-- ============================================
 	     ICONS & PWA
 	     ============================================ -->
-		<link rel="icon" type="image/svg+xml" href="/icon.svg">
-		<link rel="apple-touch-icon" href="/icon.svg">
-		<link rel="manifest" href="/manifest.json">
+	<link rel="icon" type="image/svg+xml" href="/icon.svg">
+	<link rel="apple-touch-icon" href="/icon.svg">
+	<link rel="manifest" href="/manifest.json">
 
-		<!-- ============================================
+	<!-- ============================================
 	     THEME & COLOR SCHEME
 	     ============================================ -->
-		<meta name="theme-color" content="#0d47a1">
-		<meta name="theme-color" content="#212121" media="(prefers-color-scheme: dark)">
-		<meta name="color-scheme" content="light dark">
+	<meta name="theme-color" content="#0d47a1">
+	<meta name="theme-color" content="#121212" media="(prefers-color-scheme: dark)">
+	<meta name="color-scheme" content="light dark">
 
-		<!-- ============================================
+	<!-- ============================================
 	     APPLE-SPECIFIC
 	     ============================================ -->
-		<meta name="mobile-web-app-capable" content="yes">
-		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-		<meta name="apple-mobile-web-app-title" content="ETS Framework">
-		<meta name="format-detection" content="telephone=no">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-title" content="ETS-TX">
 
-		<!-- ============================================
-	     PERFORMANCE HINTS
+	<!-- ============================================
+	     PERFORMANCE
 	     ============================================ -->
-		<!-- DNS prefetch for external domains -->
-		<link rel="dns-prefetch" href="//instant.page">
-		<link rel="dns-prefetch" href="//placehold.co">
-		<link rel="dns-prefetch" href="//github.com">
+	<link rel="preload" href="app-framework.css" as="style">
 
-		<!-- Preconnect to external hosts (establishes connection early) -->
-		<link rel="preconnect" href="https://placehold.co" crossorigin>
-		<link rel="preconnect" href="https://instant.page">
+	<!-- ============================================
+	     CRITICAL INLINE JS
+	     ============================================ -->
+	<script>(function(d,c){c.remove('no-js');c.add('js');var t=localStorage.getItem('ets-theme');if(t)d.dataset.theme=t;c.add(('ontouchstart'in window||navigator.maxTouchPoints)?'touch':'no-touch')})(document.documentElement,document.documentElement.classList);</script>
 
-		<!-- Preload critical resources -->
-		<link rel="preload" href="app-framework.css" as="style">
-
-		<!-- ============================================
+	<!-- ============================================
 	     STYLESHEET
 	     ============================================ -->
-		<link rel="stylesheet" href="app-framework.css">
+	<link rel="stylesheet" href="app-framework.css">
 
+	<!-- Theme anchor targets (CSS-only theme switching fallback) -->
+	<style>
+		/* Inline styles for code display in demo */
+		.code-example {
+			background: var(--bg-hover);
+			border: var(--border-width) solid var(--border-light);
+			border-radius: var(--radius-md);
+			padding: var(--space-3);
+			margin-top: var(--space-2);
+			font-size: var(--text-xs);
+			overflow-x: auto;
+		}
+		.code-example code {
+			background: none;
+			padding: 0;
+			color: var(--preformatted);
+		}
+		.component-demo {
+			padding: var(--space-4);
+			background: var(--bg);
+			border: var(--border-width) dashed var(--border);
+			border-radius: var(--radius-md);
+			margin-bottom: var(--space-3);
+		}
+		.color-swatch {
+			display: flex;
+			align-items: center;
+			gap: var(--space-3);
+			padding: var(--space-3);
+			border-radius: var(--radius-md);
+			margin-bottom: var(--space-2);
+		}
+		.color-swatch .swatch {
+			width: 48px;
+			height: 48px;
+			border-radius: var(--radius-md);
+			border: var(--border-width) solid var(--border-light);
+			flex-shrink: 0;
+		}
+		.color-swatch .info {
+			flex: 1;
+		}
+		.color-swatch .name {
+			font-weight: 600;
+			font-size: var(--text-sm);
+		}
+		.color-swatch .value {
+			font-size: var(--text-xs);
+			color: var(--text-muted);
+			font-family: var(--mono-font);
+		}
+	</style>
+</head>
+<body>
+	<!-- Theme target anchors -->
+	<span id="light"></span>
+	<span id="dark"></span>
+	<span id="high-contrast"></span>
+
+	<!-- Skip link for accessibility -->
+	<a href="#main-content" class="skip-link">Skip to main content</a>
+
+	<!-- Screen reader announcements -->
+	<div id="announcer" aria-live="polite" aria-atomic="true"></div>
+
+	<div class="app-layout">
 		<!-- ============================================
-	     STRUCTURED DATA (JSON-LD) - Organization
-	     ============================================ -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "Organization",
-				"name": "ETS Framework",
-				"url": "https://github.com/ets-tx/ets-framework",
-				"description": "Lightweight, classless CSS framework for modern web applications",
-				"founder": {
-					"@type": "Person",
-					"name": "Bryan A Counts"
-				}
-			}
-		</script>
+		     SIDEBAR
+		     ============================================ -->
+		<aside>
+			<header>
+				<div class="sidebar-logo">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+				</div>
+				<div class="sidebar-brand">
+					<a href="/" class="brand-name-link" aria-label="ETS-TX - Go to homepage">
+						<span class="brand-name">ETS-TX</span>
+					</a>
+					<!-- <span class="brand-version">v26.0α</span> -->
+				</div>
+				<button class="sidebar-toggle" data-sidebar-toggle aria-label="Collapse sidebar">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+						<rect x="3" y="3" width="18" height="18" rx="2"/>
+						<path d="M9 3v18"/>
+					</svg>
+				</button>
+			</header>
 
-		<!-- ============================================
-	     STRUCTURED DATA (JSON-LD) - SoftwareApplication
-	     ============================================ -->
-		<script type="application/ld+json">
-			{
-				"@context": "https://schema.org",
-				"@type": "SoftwareApplication",
-				"name": "ETS Framework",
-				"applicationCategory": "DeveloperApplication",
-				"operatingSystem": "Any",
-				"offers": {
-					"@type": "Offer",
-					"price": "0",
-					"priceCurrency": "USD"
-				},
-				"description": "Accessible, classless CSS framework optimized for video-heavy LMS and admin applications"
-			}
-		</script>
-	</head>
-
-	<body id="top">
-		<!-- ============================================
-	     THEME SWITCHER (CSS-only via :target)
-	     ============================================ -->
-		<span id="dark"></span>
-		<span id="high-contrast"></span>
-
-		<!-- ============================================
-	     SKIP NAVIGATION (WCAG 2.4.1)
-	     ============================================ -->
-		<a href="#main" class="visually-hidden">Skip to main content</a>
-		<a href="#nav-main" class="visually-hidden">Skip to navigation</a>
-
-		<!-- ============================================
-	     ARIA LIVE REGIONS (Screen Reader Announcements)
-	     ============================================ -->
-		<div role="status" aria-live="polite" aria-atomic="true" class="visually-hidden" id="status-message"></div>
-		<div role="alert" aria-live="assertive" aria-atomic="true" class="visually-hidden" id="alert-message"></div>
-
-		<!-- ============================================
-	     HEADER
-	     ============================================ -->
-		<header aria-label="Site header">
-			<h1>ETS Framework Test Page</h1>
-			<p>This is a test page filled with common HTML elements to demonstrate the framework's styling capabilities.</p>
-
-			<nav aria-label="Main navigation" id="nav-main">
-				<ul>
-					<li><a href="#base" aria-current="page">Base</a></li>
-					<li><a href="#media">Media</a></li>
-					<li><a href="#interactive">Interactive</a></li>
-					<li><a href="#utilities">Accessibility</a></li>
-					<li><a href="https://github.com/ets-tx/ets-framework" target="_blank" rel="noopener noreferrer">GitHub</a></li>
-				</ul>
-			</nav>
-			<nav aria-label="Theme switcher">
-				<ul>
-					<li><a href="#light">Light</a></li>
-					<li><a href="#dark">Dark</a></li>
-					<li><a href="#high-contrast">High Contrast</a></li>
-				</ul>
-			</nav>
-		</header>
-
-		<!-- ============================================
-	     MAIN CONTENT
-	     ============================================ -->
-		<main id="main" aria-label="Main content">
-			<!-- Table of contents - collapsed by default -->
-			<details>
-				<summary>Table of contents</summary>
-				<nav aria-label="Table of contents">
+			<div class="aside-content">
+				<nav aria-label="Main navigation">
 					<ul>
-						<li>
-							<a href="#base">Base typography and layout</a>
-							<ul>
-								<li><a href="#base__headings">Headings</a></li>
-								<li><a href="#base__paragraphs">Paragraphs</a></li>
-								<li><a href="#base__lists">Lists</a></li>
-								<li><a href="#base__blockquotes">Blockquotes</a></li>
-								<li><a href="#base__asides">Asides</a></li>
-								<li><a href="#base__details">Details and summary</a></li>
-								<li><a href="#base__address">Address</a></li>
-								<li><a href="#base__hr">Horizontal rules</a></li>
-								<li><a href="#base__tables">Tabular data</a></li>
-								<li><a href="#base__code">Code</a></li>
-								<li><a href="#base__sections">Sections</a></li>
-								<li><a href="#base__inline">Inline elements</a></li>
-								<li><a href="#base__comments">HTML comments</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#media">Media and embedded content</a>
-							<ul>
-								<li><a href="#media__images">Images</a></li>
-								<li><a href="#media__bgimages">Background images</a></li>
-								<li><a href="#media__audio">Audio</a></li>
-								<li><a href="#media__video">Video</a></li>
-								<li><a href="#media__canvas">Canvas</a></li>
-								<li><a href="#media__meter">Meter</a></li>
-								<li><a href="#media__progress">Progress</a></li>
-								<li><a href="#media__svg">Inline SVG</a></li>
-								<li><a href="#media__iframe">iframes</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#interactive">Forms and interactive elements</a>
-							<ul>
-								<li><a href="#interactive__input">Input fields</a></li>
-								<li><a href="#interactive__select">Select menus</a></li>
-								<li><a href="#interactive__checkbox">Checkboxes</a></li>
-								<li><a href="#interactive__radio">Radio buttons</a></li>
-								<li><a href="#interactive__textareas">Textareas</a></li>
-								<li><a href="#interactive__html5">HTML5 inputs</a></li>
-								<li><a href="#interactive__action">Action buttons</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="#utilities">Accessibility</a>
-							<ul>
-								<li><a href="#utilities__visually-hidden">.visually-hidden</a></li>
-								<li><a href="#utilities__dark-mode">Automatic Dark Mode</a></li>
-								<li><a href="#utilities__keyboard">Keyboard Navigation</a></li>
-							</ul>
-						</li>
+						<li><a href="#overview" aria-current="page" title="Overview">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+							<span>Overview</span>
+						</a></li>
+						<li><a href="#installation" title="Installation">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+							<span>Installation</span>
+						</a></li>
+					</ul>
+
+					<h6><span>Foundation</span></h6>
+					<ul>
+						<li><a href="#colors" title="Colors">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22v-6"/><path d="M12 22c-4.2 0-7-1.7-7-5 4.2 0 7-1.7 7-5s2.8-5 7-5c0 4.2 1.7 7 5 7-4.2 0-7 1.7-7 5s-2.8 5-7 5"/></svg>
+							<span>Colors</span>
+						</a></li>
+						<li><a href="#typography" title="Typography">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>
+							<span>Typography</span>
+						</a></li>
+						<li><a href="#spacing" title="Spacing & Grid">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+							<span>Spacing & Grid</span>
+						</a></li>
+					</ul>
+
+					<h6><span>Components</span></h6>
+					<ul>
+						<li><a href="#buttons" title="Buttons">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="2"/></svg>
+							<span>Buttons</span>
+						</a></li>
+						<li><a href="#forms" title="Forms">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+							<span>Forms</span>
+						</a></li>
+						<li><a href="#cards" title="Cards">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/></svg>
+							<span>Cards</span>
+						</a></li>
+						<li><a href="#badges" title="Badges & Status">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/></svg>
+							<span>Badges & Status</span>
+						</a></li>
+						<li><a href="#tables" title="Tables">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/></svg>
+							<span>Tables</span>
+						</a></li>
+						<li><a href="#avatars" title="Avatars">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+							<span>Avatars</span>
+						</a></li>
+					</ul>
+
+					<h6><span>Patterns</span></h6>
+					<ul>
+						<li><a href="#layout" title="Layout">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M9 15h12"/></svg>
+							<span>Layout</span>
+						</a></li>
+						<li><a href="#loading" title="Loading States">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>
+							<span>Loading States</span>
+						</a></li>
+						<li><a href="#accessibility" title="Accessibility">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></svg>
+							<span>Accessibility</span>
+						</a></li>
 					</ul>
 				</nav>
-			</details>
+			</div>
+
+			<footer>
+				<!-- User Menu with Popup -->
+				<div class="user-menu-wrapper">
+					<button class="user-menu-trigger" aria-haspopup="true" aria-expanded="false" data-user-popup-toggle>
+						<span class="avatar" data-size="md">BC</span>
+						<div class="user-info">
+							<div class="user-name">Bryan Counts</div>
+							<div class="user-role">Administrator</div>
+						</div>
+						<svg class="user-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+					</button>
+
+					<!-- User Popup Menu - Minimal Clarity Design -->
+					<div class="user-popup" role="menu" aria-label="User menu">
+						<div class="user-popup-header">
+							<span class="avatar" data-size="md">BC</span>
+							<div class="user-popup-info">
+								<div class="user-popup-name">Bryan Counts</div>
+								<div class="user-popup-email">bryan@example.com</div>
+							</div>
+						</div>
+						<nav class="user-popup-menu">
+							<button type="button" role="menuitem">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+								Profile
+							</button>
+							<button type="button" role="menuitem">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+								Settings
+							</button>
+							<button type="button" role="menuitem">
+								<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+								Help
+							</button>
+						</nav>
+						<button class="user-popup-signout" role="menuitem">
+							<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+							Sign Out
+						</button>
+					</div>
+				</div>
+
+				<!-- Theme Switcher -->
+				<!-- Theme Switcher - Full view (expanded sidebar) -->
+				<nav aria-label="Theme switcher" class="theme-switcher-full">
+					<ul>
+						<li><a href="#light" data-theme-btn="light" aria-current="true" title="Light theme">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+						</a></li>
+						<li><a href="#dark" data-theme-btn="dark" title="Dark theme">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+						</a></li>
+						<li><a href="#high-contrast" data-theme-btn="high-contrast" title="High contrast theme">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg>
+						</a></li>
+					</ul>
+				</nav>
+
+				<!-- Theme Toggle - Collapsed view (single button cycles themes) -->
+				<button class="theme-toggle-collapsed" data-theme-cycle aria-label="Change theme">
+					<!-- Light mode icon (sun) - shown when in light mode -->
+					<svg class="theme-icon-light" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+					<!-- Dark mode icon (moon) - shown when in dark mode -->
+					<svg class="theme-icon-dark" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+					<!-- High contrast icon (half circle) - shown when in high contrast mode -->
+					<svg class="theme-icon-contrast" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg>
+				</button>
+			</footer>
+		</aside>
+
+		<!-- ============================================
+		     MAIN CONTENT
+		     ============================================ -->
+		<main id="main-content">
+			<!-- Top Header Bar -->
+			<header class="app-header">
+				<!-- Hamburger only shows on tablet (hidden on mobile where bottom bar has Menu, hidden on desktop where sidebar is always visible) -->
+				<button data-variant="ghost" data-icon-only data-sidebar-toggle aria-label="Toggle sidebar" class="tablet-only">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+				</button>
+				<h1>Style Guide</h1>
+				<div class="header-actions">
+					<button data-variant="outline" data-size="sm">
+						<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v18m9-9H3"/></svg>
+						New
+					</button>
+				</div>
+			</header>
 
 			<!-- ============================================
-		     BASE TYPOGRAPHY & LAYOUT
-		     Semantic HTML elements and text formatting
-		     ============================================ -->
-			<section id="base">
-				<header>
-					<h2>Base typography and layout</h2>
-				</header>
-				<article id="base__headings">
-					<header>
-						<h3>Headings</h3>
-					</header>
-					<!-- Inline styles are an intentional exception here to demonstrate heading sizes without disrupting document outline -->
-					<figure>
-						<figcaption>Heading styles H1-H6</figcaption>
-						<p><b style="font-size: 3rem; line-height: 1.1">Heading 1</b></p>
-						<p><b style="font-size: 2.6rem; line-height: 1.1">Heading 2</b></p>
-						<p><b style="font-size: 2rem; line-height: 1.1">Heading 3</b></p>
-						<p><b style="font-size: 1.44rem; line-height: 1.1">Heading 4</b></p>
-						<p><b style="font-size: 1.15rem; line-height: 1.1">Heading 5</b></p>
-						<p><b style="font-size: 0.96rem; line-height: 1.1">Heading 6</b></p>
-					</figure>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__paragraphs">
-					<header>
-						<h3>Paragraphs</h3>
-					</header>
+			     OVERVIEW SECTION
+			     ============================================ -->
+			<section id="overview">
+				<h2>Overview</h2>
+				<p>ETS-TX v26.0α is a modern, accessible CSS framework designed for admin interfaces and LMS applications. Built with a focus on performance, accessibility, and developer experience.</p>
 
-					<p>A paragraph (from the Greek paragraphos, “to write beside” or “written beside”) is a self-contained unit of a discourse in writing dealing with a particular point or idea. A paragraph consists of one or more sentences. Though not required by the syntax of any language, paragraphs are usually an expected part of formal writing, used to organize longer prose.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__blockquotes">
-					<header>
-						<h3>Blockquotes</h3>
-					</header>
-
-					<blockquote>
-						<p>A block quotation (also known as a long quotation or extract) is a quotation in a written document, that is set off from the main text as a paragraph, or block of text.</p>
-						<p>It is typically distinguished visually using indentation and a different typeface or smaller size quotation. It may or may not include a citation, usually placed at the bottom.</p>
-						<cite><a href="#base__blockquotes">Said no one, ever.</a></cite>
-					</blockquote>
-
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__asides">
-					<header>
-						<h3>Asides</h3>
-					</header>
-					<aside>
-						<p><strong>This is an aside</strong></p>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa cumque numquam natus harum delectus autem, ipsam veritatis eligendi.</p>
-					</aside>
-					<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum eligendi optio ipsa nemo assumenda mollitia inventore neque dolores animi ratione libero qui dolorem, distinctio aut, quae, iste, cumque nihil enim!</p>
-					<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolorum perspiciatis corrupti eaque tempore autem doloremque, placeat, in earum ab maxime commodi tenetur quos provident fugit assumenda, consequatur vero ipsum, et.</p>
-					<p>Lorem ipsum dolor sit amet consectetur adipisicing, elit. Molestias, facilis. Dolores rerum omnis, adipisci odit ipsa, autem animi molestiae fugit temporibus fuga dignissimos, commodi et, itaque quo voluptatem recusandae voluptatibus.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__lists">
-					<header>
-						<h3>Lists</h3>
-					</header>
-
-					<h3>Description list</h3>
-					<dl>
-						<dt>Description term</dt>
-						<dd>Description details.</dd>
-						<dd>Additional details.</dd>
-						<dt>Description term</dt>
-						<dt>This is a second term</dt>
-						<dt>This is a third term</dt>
-						<dd>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, modi iure! Incidunt, dolorum sit? Dolorum cumque omnis accusantium doloremque nihil est perferendis voluptas delectus, quis aperiam blanditiis deleniti modi at. Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, perspiciatis, vero accusantium sed dicta exercitationem iure praesentium nobis esse ullam sunt cum blanditiis! Neque similique corporis animi voluptatibus et modi.</dd>
-					</dl>
-					<h3>Ordered list</h3>
-					<ol type="1">
-						<li>List Item 1</li>
-						<li>
-							List Item 2
-							<ol type="A">
-								<li>List Item 1</li>
-								<li>
-									List Item 2
-									<ol type="a">
-										<li>List Item 1</li>
-										<li>
-											List Item 2
-											<ol type="I">
-												<li>List Item 1</li>
-												<li>
-													List Item 2
-													<ol type="i">
-														<li>List Item 1</li>
-														<li>List Item 2</li>
-														<li>List Item 3</li>
-													</ol>
-												</li>
-												<li>List Item 3</li>
-											</ol>
-										</li>
-										<li>List Item 3</li>
-									</ol>
-								</li>
-								<li>List Item 3</li>
-							</ol>
-						</li>
-						<li>List Item 3</li>
-					</ol>
-					<h3>Unordered list</h3>
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Key Features</h3>
 					<ul>
-						<li>List Item 1</li>
-						<li>
-							List Item 2
+						<li><strong>≤25KB CSS</strong> — Lightweight, no dependencies</li>
+						<li><strong>WCAG 2.1 AA+</strong> — Fully accessible out of the box</li>
+						<li><strong>3 Themes</strong> — Light, Dark, and High Contrast</li>
+						<li><strong>Mobile-First</strong> — Responsive 8→12→16 column grid</li>
+						<li><strong>System Fonts</strong> — No web fonts, faster load times</li>
+						<li><strong>Semantic HTML</strong> — Classless where possible</li>
+					</ul>
+				</article>
+
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Browser Support</h3>
+					<p>95%+ global browser coverage:</p>
+					<ul>
+						<li>Chrome 90+, Edge 90+</li>
+						<li>Firefox 88+</li>
+						<li>Safari 14+</li>
+						<li>iOS Safari 14+</li>
+						<li>Samsung Internet 14+</li>
+					</ul>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     INSTALLATION SECTION
+			     ============================================ -->
+			<section id="installation">
+				<h2>Installation</h2>
+				<p>Add the CSS and JS files to your project:</p>
+
+				<article>
+					<h3>HTML Setup</h3>
+					<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="en" class="no-js"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+
+  &lt;!-- Critical inline JS --&gt;
+  &lt;script&gt;(function(d,c){c.remove('no-js');c.add('js');var t=localStorage.getItem('ets-theme');if(t)d.dataset.theme=t})(document.documentElement,document.documentElement.classList);&lt;/script&gt;
+
+  &lt;link rel="stylesheet" href="app-framework.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Theme anchors --&gt;
+  &lt;span id="light"&gt;&lt;/span&gt;
+  &lt;span id="dark"&gt;&lt;/span&gt;
+  &lt;span id="high-contrast"&gt;&lt;/span&gt;
+
+  &lt;!-- Your content --&gt;
+
+  &lt;script src="app-framework.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     COLORS SECTION
+			     ============================================ -->
+			<section id="colors">
+				<h2>Colors</h2>
+				<p>A semantic color system that adapts to light, dark, and high contrast themes.</p>
+
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Brand Colors</h3>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--brand-yellow);"></div>
+						<div class="info">
+							<div class="name">Brand Yellow</div>
+							<div class="value">--brand-yellow: #FFD600</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--brand-blue);"></div>
+						<div class="info">
+							<div class="name">Brand Blue</div>
+							<div class="value">--brand-blue: #0D47A1</div>
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Semantic Colors</h3>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--accent);"></div>
+						<div class="info">
+							<div class="name">Accent</div>
+							<div class="value">--accent (Blue in light, Yellow in dark)</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--bg);"></div>
+						<div class="info">
+							<div class="name">Background</div>
+							<div class="value">--bg</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--bg-card);"></div>
+						<div class="info">
+							<div class="name">Card Background</div>
+							<div class="value">--bg-card</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--text); border-color: var(--border);"></div>
+						<div class="info">
+							<div class="name">Text</div>
+							<div class="value">--text</div>
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Status Colors</h3>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--success);"></div>
+						<div class="info">
+							<div class="name">Success</div>
+							<div class="value">--success</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--warning);"></div>
+						<div class="info">
+							<div class="name">Warning</div>
+							<div class="value">--warning</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--danger);"></div>
+						<div class="info">
+							<div class="name">Danger</div>
+							<div class="value">--danger</div>
+						</div>
+					</div>
+					<div class="color-swatch">
+						<div class="swatch" style="background: var(--info);"></div>
+						<div class="info">
+							<div class="name">Info</div>
+							<div class="value">--info</div>
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8" data-tablet-col="6">
+					<h3>Shadows</h3>
+					<div style="display: flex; gap: var(--space-4); flex-wrap: wrap;">
+						<div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-xs); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs);">XS</div>
+						<div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs);">SM</div>
+						<div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs);">MD</div>
+						<div style="width: 80px; height: 80px; background: var(--bg-card); border-radius: var(--radius-md); box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center; font-size: var(--text-xs);">LG</div>
+					</div>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     TYPOGRAPHY SECTION
+			     ============================================ -->
+			<section id="typography">
+				<h2>Typography</h2>
+				<p>Fluid typography using <code>clamp()</code> for smooth scaling across devices.</p>
+
+				<article>
+					<h3>Headings</h3>
+					<h1 style="margin-top: 0;">Heading 1</h1>
+					<h2 style="margin-top: var(--space-4);">Heading 2</h2>
+					<h3>Heading 3</h3>
+					<h4>Heading 4</h4>
+					<h5>Heading 5</h5>
+					<h6>HEADING 6</h6>
+				</article>
+
+				<article>
+					<h3>Body Text</h3>
+					<p>This is a paragraph of body text. The base font size uses <code>clamp(0.875rem, 0.85rem + 0.2vw, 1rem)</code> for fluid scaling between 14-16px.</p>
+					<p><strong>Bold text</strong> for emphasis. <em>Italic text</em> for alternative emphasis. <a href="#typography">Links are styled</a> with the accent color.</p>
+					<p><small>Small text for captions and helper text.</small></p>
+				</article>
+
+				<article>
+					<h3>Lists</h3>
+					<ul>
+						<li>Unordered list item one</li>
+						<li>Unordered list item two
 							<ul>
-								<li>List Item 1</li>
-								<li>
-									List Item 2
-									<ul>
-										<li>List Item 1</li>
-										<li>
-											List Item 2
-											<ul>
-												<li>List Item 1</li>
-												<li>
-													List Item 2
-													<ul>
-														<li>List Item 1</li>
-														<li>List Item 2</li>
-														<li>List Item 3</li>
-													</ul>
-												</li>
-												<li>List Item 3</li>
-											</ul>
-										</li>
-										<li>List Item 3</li>
-									</ul>
-								</li>
-								<li>List Item 3</li>
+								<li>Nested item</li>
+								<li>Another nested item</li>
 							</ul>
 						</li>
-						<li>List Item 3</li>
+						<li>Unordered list item three</li>
 					</ul>
+					<ol>
+						<li>Ordered list item one</li>
+						<li>Ordered list item two</li>
+						<li>Ordered list item three</li>
+					</ol>
+				</article>
 
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article>
+					<h3>Code</h3>
+					<p>Inline <code>code</code> uses the mono font stack.</p>
+					<pre><code>// Code block
+function greet(name) {
+  return `Hello, ${name}!`;
+}</code></pre>
+					<p>Keyboard shortcuts: <kbd>Ctrl</kbd> + <kbd>S</kbd></p>
 				</article>
-				<article id="base__details">
-					<header>
-						<h3>Details and summary</h3>
-					</header>
-					<p><strong>Keyboard Navigation:</strong> Press Tab to focus, Enter or Space to toggle open/closed.</p>
-					<details>
-						<summary>Expand for details</summary>
-						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, odio! Odio natus ullam ad quaerat, eaque necessitatibus, aliquid distinctio similique voluptatibus dicta consequuntur animi. Quaerat facilis quidem unde eos! Ipsa.</p>
-					</details>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__address">
-					<header>
-						<h3>Address</h3>
-					</header>
-					<address>
-						Written by <a href="mailto:webmaster@example.com">Jon Doe</a>.<br>
-						Visit us at:<br>
-						Example.com<br>
-						Box 564, Disneyland<br>
-						USA
-					</address>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__hr">
-					<header>
-						<h3>Horizontal rules</h3>
-					</header>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<hr>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__tables">
-					<header>
-						<h3>Tabular data</h3>
-					</header>
-					<table role="region" aria-label="Table Caption" tabindex="0">
-						<caption>
-							Table Caption
-						</caption>
+			</section>
+
+			<!-- ============================================
+			     SPACING SECTION
+			     ============================================ -->
+			<section id="spacing">
+				<h2>Spacing & Grid</h2>
+				<p>A 4px base unit spacing system and responsive grid.</p>
+
+				<article>
+					<h3>Spacing Scale</h3>
+					<table>
 						<thead>
 							<tr>
-								<th>Table Heading 1</th>
-								<th>Table Heading 2</th>
-								<th>Table Heading 3</th>
-								<th>Table Heading 4</th>
-								<th>Table Heading 5</th>
+								<th>Token</th>
+								<th>Value</th>
+								<th>Use Case</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>Table Cell 1</td>
-								<td>Table Cell 2</td>
-								<td>Table Cell 3</td>
-								<td>Table Cell 4</td>
-								<td>Table Cell 5</td>
-							</tr>
-							<tr>
-								<td>Table Cell 1</td>
-								<td>Table Cell 2</td>
-								<td>Table Cell 3</td>
-								<td>Table Cell 4</td>
-								<td>Table Cell 5</td>
-							</tr>
-							<tr>
-								<td>Table Cell 1</td>
-								<td>Table Cell 2</td>
-								<td>Table Cell 3</td>
-								<td>Table Cell 4</td>
-								<td>Table Cell 5</td>
-							</tr>
-							<tr>
-								<td>Table Cell 1</td>
-								<td>Table Cell 2</td>
-								<td>Table Cell 3</td>
-								<td>Table Cell 4</td>
-								<td>Table Cell 5</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<th>Table Footer 1</th>
-								<th>Table Footer 2</th>
-								<th>Table Footer 3</th>
-								<th>Table Footer 4</th>
-								<th>Table Footer 5</th>
-							</tr>
-						</tfoot>
-					</table>
-					<table role="region" aria-label="Overflowing table example" tabindex="0">
-						<caption>
-							Overflowing table
-						</caption>
-						<colgroup>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-							<col>
-						</colgroup>
-						<thead>
-							<tr>
-								<th>Header_1</th>
-								<th>Header_2</th>
-								<th>Header_3</th>
-								<th>Header_4</th>
-								<th>Header_5</th>
-								<th>Header_6</th>
-								<th>Header_7</th>
-								<th>Header_8</th>
-								<th>Header_9</th>
-								<th>Header_10</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Row:1 Cell:1</td>
-								<td>Row:1 Cell:2</td>
-								<td>Row:1 Cell:3</td>
-								<td>Row:1 Cell:4</td>
-								<td>Row:1 Cell:5</td>
-								<td>Row:1 Cell:6</td>
-								<td>Row:1 Cell:7</td>
-								<td>Row:1 Cell:8</td>
-								<td>Row:1 Cell:9</td>
-								<td>Row:1 Cell:10</td>
-							</tr>
-							<tr>
-								<td>Row:2 Cell:1</td>
-								<td>Row:2 Cell:2</td>
-								<td>Row:2 Cell:3</td>
-								<td>Row:2 Cell:4</td>
-								<td>Row:2 Cell:5</td>
-								<td>Row:2 Cell:6</td>
-								<td>Row:2 Cell:7</td>
-								<td>Row:2 Cell:8</td>
-								<td>Row:2 Cell:9</td>
-								<td>Row:2 Cell:10</td>
-							</tr>
-							<tr>
-								<td>Row:3 Cell:1</td>
-								<td>Row:3 Cell:2</td>
-								<td>Row:3 Cell:3</td>
-								<td>Row:3 Cell:4</td>
-								<td>Row:3 Cell:5</td>
-								<td>Row:3 Cell:6</td>
-								<td>Row:3 Cell:7</td>
-								<td>Row:3 Cell:8</td>
-								<td>Row:3 Cell:9</td>
-								<td>Row:3 Cell:10</td>
-							</tr>
-							<tr>
-								<td>Row:4 Cell:1</td>
-								<td>Row:4 Cell:2</td>
-								<td>Row:4 Cell:3</td>
-								<td>Row:4 Cell:4</td>
-								<td>Row:4 Cell:5</td>
-								<td>Row:4 Cell:6</td>
-								<td>Row:4 Cell:7</td>
-								<td>Row:4 Cell:8</td>
-								<td>Row:4 Cell:9</td>
-								<td>Row:4 Cell:10</td>
-							</tr>
-							<tr>
-								<td>Row:5 Cell:1</td>
-								<td>Row:5 Cell:2</td>
-								<td>Row:5 Cell:3</td>
-								<td>Row:5 Cell:4</td>
-								<td>Row:5 Cell:5</td>
-								<td>Row:5 Cell:6</td>
-								<td>Row:5 Cell:7</td>
-								<td>Row:5 Cell:8</td>
-								<td>Row:5 Cell:9</td>
-								<td>Row:5 Cell:10</td>
-							</tr>
-							<tr>
-								<td>Row:6 Cell:1</td>
-								<td>Row:6 Cell:2</td>
-								<td>Row:6 Cell:3</td>
-								<td>Row:6 Cell:4</td>
-								<td>Row:6 Cell:5</td>
-								<td>Row:6 Cell:6</td>
-								<td>Row:6 Cell:7</td>
-								<td>Row:6 Cell:8</td>
-								<td>Row:6 Cell:9</td>
-								<td>Row:6 Cell:10</td>
-							</tr>
+							<tr><td><code>--space-1</code></td><td>4px</td><td>Tight spacing</td></tr>
+							<tr><td><code>--space-2</code></td><td>8px</td><td>Compact spacing</td></tr>
+							<tr><td><code>--space-3</code></td><td>12px</td><td>Snug spacing</td></tr>
+							<tr><td><code>--space-4</code></td><td>16px</td><td>Default spacing</td></tr>
+							<tr><td><code>--space-6</code></td><td>24px</td><td>Relaxed spacing</td></tr>
+							<tr><td><code>--space-8</code></td><td>32px</td><td>Spacious</td></tr>
 						</tbody>
 					</table>
-					<figure>
-						<table role="region" aria-label="Overflowing table in figure" tabindex="0">
-							<colgroup>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-							</colgroup>
-							<thead>
-								<tr>
-									<th>Header_1</th>
-									<th>Header_2</th>
-									<th>Header_3</th>
-									<th>Header_4</th>
-									<th>Header_5</th>
-									<th>Header_6</th>
-									<th>Header_7</th>
-									<th>Header_8</th>
-									<th>Header_9</th>
-									<th>Header_10</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Row:1 Cell:1</td>
-									<td>Row:1 Cell:2</td>
-									<td>Row:1 Cell:3</td>
-									<td>Row:1 Cell:4</td>
-									<td>Row:1 Cell:5</td>
-									<td>Row:1 Cell:6</td>
-									<td>Row:1 Cell:7</td>
-									<td>Row:1 Cell:8</td>
-									<td>Row:1 Cell:9</td>
-									<td>Row:1 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:2 Cell:1</td>
-									<td>Row:2 Cell:2</td>
-									<td>Row:2 Cell:3</td>
-									<td>Row:2 Cell:4</td>
-									<td>Row:2 Cell:5</td>
-									<td>Row:2 Cell:6</td>
-									<td>Row:2 Cell:7</td>
-									<td>Row:2 Cell:8</td>
-									<td>Row:2 Cell:9</td>
-									<td>Row:2 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:3 Cell:1</td>
-									<td>Row:3 Cell:2</td>
-									<td>Row:3 Cell:3</td>
-									<td>Row:3 Cell:4</td>
-									<td>Row:3 Cell:5</td>
-									<td>Row:3 Cell:6</td>
-									<td>Row:3 Cell:7</td>
-									<td>Row:3 Cell:8</td>
-									<td>Row:3 Cell:9</td>
-									<td>Row:3 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:4 Cell:1</td>
-									<td>Row:4 Cell:2</td>
-									<td>Row:4 Cell:3</td>
-									<td>Row:4 Cell:4</td>
-									<td>Row:4 Cell:5</td>
-									<td>Row:4 Cell:6</td>
-									<td>Row:4 Cell:7</td>
-									<td>Row:4 Cell:8</td>
-									<td>Row:4 Cell:9</td>
-									<td>Row:4 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:5 Cell:1</td>
-									<td>Row:5 Cell:2</td>
-									<td>Row:5 Cell:3</td>
-									<td>Row:5 Cell:4</td>
-									<td>Row:5 Cell:5</td>
-									<td>Row:5 Cell:6</td>
-									<td>Row:5 Cell:7</td>
-									<td>Row:5 Cell:8</td>
-									<td>Row:5 Cell:9</td>
-									<td>Row:5 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:6 Cell:1</td>
-									<td>Row:6 Cell:2</td>
-									<td>Row:6 Cell:3</td>
-									<td>Row:6 Cell:4</td>
-									<td>Row:6 Cell:5</td>
-									<td>Row:6 Cell:6</td>
-									<td>Row:6 Cell:7</td>
-									<td>Row:6 Cell:8</td>
-									<td>Row:6 Cell:9</td>
-									<td>Row:6 Cell:10</td>
-								</tr>
-							</tbody>
-						</table>
-						<figcaption>Table in figure</figcaption>
-					</figure>
-					<details>
-						<summary>Overflowing table in details</summary>
-						<table role="region" aria-label="Overflowing table in details element" tabindex="0">
-							<caption>
-								Overflowing table
-							</caption>
-							<colgroup>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-								<col>
-							</colgroup>
-							<thead>
-								<tr>
-									<th>Header_1</th>
-									<th>Header_2</th>
-									<th>Header_3</th>
-									<th>Header_4</th>
-									<th>Header_5</th>
-									<th>Header_6</th>
-									<th>Header_7</th>
-									<th>Header_8</th>
-									<th>Header_9</th>
-									<th>Header_10</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>Row:1 Cell:1</td>
-									<td>Row:1 Cell:2</td>
-									<td>Row:1 Cell:3</td>
-									<td>Row:1 Cell:4</td>
-									<td>Row:1 Cell:5</td>
-									<td>Row:1 Cell:6</td>
-									<td>Row:1 Cell:7</td>
-									<td>Row:1 Cell:8</td>
-									<td>Row:1 Cell:9</td>
-									<td>Row:1 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:2 Cell:1</td>
-									<td>Row:2 Cell:2</td>
-									<td>Row:2 Cell:3</td>
-									<td>Row:2 Cell:4</td>
-									<td>Row:2 Cell:5</td>
-									<td>Row:2 Cell:6</td>
-									<td>Row:2 Cell:7</td>
-									<td>Row:2 Cell:8</td>
-									<td>Row:2 Cell:9</td>
-									<td>Row:2 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:3 Cell:1</td>
-									<td>Row:3 Cell:2</td>
-									<td>Row:3 Cell:3</td>
-									<td>Row:3 Cell:4</td>
-									<td>Row:3 Cell:5</td>
-									<td>Row:3 Cell:6</td>
-									<td>Row:3 Cell:7</td>
-									<td>Row:3 Cell:8</td>
-									<td>Row:3 Cell:9</td>
-									<td>Row:3 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:4 Cell:1</td>
-									<td>Row:4 Cell:2</td>
-									<td>Row:4 Cell:3</td>
-									<td>Row:4 Cell:4</td>
-									<td>Row:4 Cell:5</td>
-									<td>Row:4 Cell:6</td>
-									<td>Row:4 Cell:7</td>
-									<td>Row:4 Cell:8</td>
-									<td>Row:4 Cell:9</td>
-									<td>Row:4 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:5 Cell:1</td>
-									<td>Row:5 Cell:2</td>
-									<td>Row:5 Cell:3</td>
-									<td>Row:5 Cell:4</td>
-									<td>Row:5 Cell:5</td>
-									<td>Row:5 Cell:6</td>
-									<td>Row:5 Cell:7</td>
-									<td>Row:5 Cell:8</td>
-									<td>Row:5 Cell:9</td>
-									<td>Row:5 Cell:10</td>
-								</tr>
-								<tr>
-									<td>Row:6 Cell:1</td>
-									<td>Row:6 Cell:2</td>
-									<td>Row:6 Cell:3</td>
-									<td>Row:6 Cell:4</td>
-									<td>Row:6 Cell:5</td>
-									<td>Row:6 Cell:6</td>
-									<td>Row:6 Cell:7</td>
-									<td>Row:6 Cell:8</td>
-									<td>Row:6 Cell:9</td>
-									<td>Row:6 Cell:10</td>
-								</tr>
-							</tbody>
-						</table>
-					</details>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
 				</article>
-				<article id="base__code">
-					<header>
-						<h3>Code</h3>
-					</header>
 
-					<p><strong>Keyboard input:</strong> <kbd>Cmd</kbd></p>
-					<p><strong>Inline code:</strong> <code>&lt;div&gt;code&lt;/div&gt;</code></p>
-					<p><strong>Sample output:</strong> <samp>This is sample output from a computer program.</samp></p>
-					<h3>Pre-formatted text</h3>
-					<pre role="region" aria-label="ASCII art example" tabindex="0">
-P R E F O R M A T T E D T E X T
-	! " # $ % &amp; ' ( ) * + , - . /
-	0 1 2 3 4 5 6 7 8 9 : ; &lt; = &gt; ?
-	@ A B C D E F G H I J K L M N O
-	P Q R S T U V W X Y Z [ \ ] ^ _
-	` a b c d e f g h i j k l m n o
-	p q r s t u v w x y z { | } ~ </pre
-					>
-
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article>
+					<h3>Border Radius</h3>
+					<div style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: flex-end;">
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-xs);"></div>
+							<small>XS (4px)</small>
+						</div>
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-sm);"></div>
+							<small>SM (6px)</small>
+						</div>
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-md);"></div>
+							<small>MD (8px)</small>
+						</div>
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-lg);"></div>
+							<small>LG (12px)</small>
+						</div>
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-xl);"></div>
+							<small>XL (16px)</small>
+						</div>
+						<div style="text-align: center;">
+							<div style="width: 48px; height: 48px; background: var(--accent); border-radius: var(--radius-full);"></div>
+							<small>Full</small>
+						</div>
+					</div>
 				</article>
-				<article id="base__sections">
-					<header>
-						<h3>Text sections</h3>
-					</header>
-					<section>
-						<h3>Header 1</h3>
-						<p>Test section 1</p>
-					</section>
-					<section>
-						<h3>Header 2</h3>
-						<p>Test section 2</p>
-					</section>
-					<section>
-						<h3>Header 3</h3>
-						<p>Test section 3</p>
-					</section>
-				</article>
-				<article id="base__inline">
-					<header>
-						<h3>Inline elements</h3>
-					</header>
 
-					<p><a href="#base__inline">This is a text link</a>.</p>
-					<p><strong>Strong is used to indicate strong importance.</strong></p>
-					<p><em>This text has added emphasis.</em></p>
-					<p>The <b>b element</b> is stylistically different text from normal text, without any special importance.</p>
-					<p>The <i>i element</i> is text that is offset from the normal text.</p>
-					<p><del>This text is deleted</del> and <ins>This text is inserted</ins>.</p>
-					<p><s>This text has a strikethrough</s>.</p>
-					<p>Superscript<sup>®</sup>.</p>
-					<p>Subscript for things like H<sub>2</sub>O.</p>
-					<p><small>This small text is small for fine print, etc.</small></p>
-					<p>Abbreviation: <abbr title="HyperText Markup Language">HTML</abbr></p>
-					<p><q cite="https://developer.mozilla.org/en-US/docs/HTML/Element/q">This text is a short inline quotation.</q></p>
-					<p><cite>This is a citation.</cite></p>
-					<p>The <dfn>dfn element</dfn> indicates a definition.</p>
-					<p>The <mark>mark element</mark> indicates a highlight.</p>
-					<p>The <var>variable element</var>, such as <var>x</var> = <var>y</var>.</p>
-					<p>The time element: <time datetime="2013-04-06T12:32+00:00">2 weeks ago</time></p>
-
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="base__comments">
-					<header>
-						<h3>HTML Comments</h3>
-					</header>
-
-					<p>
-						There is comment here:
-						<!--This comment should not be displayed-->
-					</p>
-					<p>There is a comment spanning multiple tags and lines below here.</p>
-					<!--<p><a href="#!">This is a text link. But it should not be displayed in a comment</a>.</p>
-	            <p><strong>Strong is used to indicate strong importance. But, it should not be displayed in a comment</strong></p>
-	            <p><em>This text has added emphasis. But, it should not be displayed in a comment</em></p>-->
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article>
+					<h3>Grid System</h3>
+					<p>Responsive grid: 8 columns (mobile) → 12 columns (tablet) → 16 columns (desktop).</p>
+					<div class="code-example">
+						<code>&lt;article data-col="4" data-tablet-col="6" data-desktop-col="8"&gt;...&lt;/article&gt;</code>
+					</div>
 				</article>
 			</section>
+
 			<!-- ============================================
-			     MEDIA & EMBEDDED CONTENT
-			     Images, video, audio, canvas, SVG
+			     BUTTONS SECTION
 			     ============================================ -->
-			<section id="media">
-				<header>
-					<h2>Media and embedded content</h2>
-				</header>
-				<article id="media__images">
-					<header>
-						<h3>Images</h3>
-					</header>
+			<section id="buttons">
+				<h2>Buttons</h2>
+				<p>Button variants for different contexts and importance levels.</p>
 
-					<h3>Plain <code>&lt;img&gt;</code> element</h3>
-					<p><img src="https://placehold.co/480x480/EEE/31343C" alt="Example image demonstrating plain img element" width="480" height="480" loading="eager"></p>
-					<h3><code>&lt;figure&gt;</code> element with <code>&lt;img&gt;</code> element</h3>
-					<figure><img src="https://placehold.co/420x420/EEE/31343C" alt="Example image in figure element" loading="lazy"></figure>
-					<h3><code>&lt;figure&gt;</code> element with <code>&lt;img&gt;</code> and <code>&lt;figcaption&gt;</code> elements</h3>
-					<figure>
-						<img src="https://placehold.co/420x420/EEE/31343C" alt="Example image with caption" loading="lazy">
-						<figcaption>Here is a caption for this image.</figcaption>
-					</figure>
-					<h3><code>&lt;figure&gt;</code> element with a <code>&lt;picture&gt;</code> element</h3>
-					<figure>
-						<picture>
-							<source srcset="https://placehold.co/2000x2000/EEE/31343C" media="(min-width: 800px)">
-							<img src="https://placehold.co/420x420/EEE/31343C" alt="Responsive image example using picture element" loading="lazy">
-						</picture>
-						<figcaption>Here is a caption for this image.</figcaption>
-					</figure>
+				<article>
+					<h3>Button Variants</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<button>Primary</button>
+						<button data-variant="outline">Outline</button>
+						<button data-variant="ghost">Ghost</button>
+						<button data-variant="danger">Danger</button>
+						<button disabled>Disabled</button>
+					</div>
+					<div class="code-example">
+						<code>&lt;button&gt;Primary&lt;/button&gt;
+&lt;button data-variant="outline"&gt;Outline&lt;/button&gt;
+&lt;button data-variant="ghost"&gt;Ghost&lt;/button&gt;
+&lt;button data-variant="danger"&gt;Danger&lt;/button&gt;</code>
+					</div>
+				</article>
 
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article>
+					<h3>Button Sizes</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<button data-size="sm">Small</button>
+						<button>Default</button>
+						<button data-size="lg">Large</button>
+					</div>
+					<div class="code-example">
+						<code>&lt;button data-size="sm"&gt;Small&lt;/button&gt;
+&lt;button&gt;Default&lt;/button&gt;
+&lt;button data-size="lg"&gt;Large&lt;/button&gt;</code>
+					</div>
 				</article>
-				<article id="media__bgimages">
-					<header>
-						<h3>Background images</h3>
-					</header>
-					<p>Background images are applied via CSS, not inline styles. See <code>app-framework.css</code> for examples of background styling patterns.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+
+				<article>
+					<h3>Icon Buttons</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<button>
+							<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>
+							Add Item
+						</button>
+						<button data-icon-only aria-label="Settings">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+						</button>
+						<button data-variant="ghost" data-icon-only aria-label="More options">
+							<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+						</button>
+					</div>
 				</article>
-				<article id="media__audio">
-					<header>
-						<h3>Audio</h3>
-					</header>
-					<p>Audio element styling is included in the framework. Production implementations should include <code>&lt;track&gt;</code> elements for captions and transcripts (WCAG Level A requirement).</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__video">
-					<header>
-						<h3>Video</h3>
-					</header>
-					<p>Video element styling is included in the framework. Production implementations must include <code>&lt;track&gt;</code> elements for synchronized captions (WCAG Level A requirement).</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__canvas">
-					<header>
-						<h3>Canvas</h3>
-					</header>
-					<canvas>canvas</canvas>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__meter">
-					<header>
-						<h3>Meter</h3>
-					</header>
-					<meter value="2" min="0" max="10">2 out of 10</meter>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__progress">
-					<header>
-						<h3>Progress</h3>
-					</header>
-					<label for="progress-bar">No attributes (indeterminate)</label>
-					<progress id="progress-bar">progress</progress>
-					<label for="progress-30">30%, max 100%</label>
-					<progress id="progress-30" max="100" value="30">30%</progress>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__svg">
-					<header>
-						<h3>Inline SVG</h3>
-					</header>
-					<svg width="100px" height="100px">
-						<circle cx="100" cy="100" r="100" fill="#1fa3ec"></circle>
-					</svg>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
-				</article>
-				<article id="media__iframe">
-					<header>
-						<h3>IFrame</h3>
-					</header>
-					<p>Iframe example (self-referencing for demo purposes):</p>
-					<iframe src="index.html" height="300" loading="lazy" title="Embedded example page"></iframe>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+
+				<article>
+					<h3>Loading State</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<button data-loading>Loading</button>
+						<button data-variant="outline" data-loading>Loading</button>
+					</div>
+					<div class="code-example">
+						<code>&lt;button data-loading&gt;Loading&lt;/button&gt;</code>
+					</div>
 				</article>
 			</section>
+
 			<!-- ============================================
-			     FORMS & INTERACTIVE ELEMENTS
-			     Form inputs, buttons, interactive controls
+			     FORMS SECTION
 			     ============================================ -->
-			<section id="interactive">
-				<header>
-					<h2>Forms and interactive elements</h2>
-				</header>
-				<form>
-					<fieldset id="interactive__input">
-						<legend>Input fields</legend>
-						<p>
-							<label for="input__text">Text Input</label>
-							<input id="input__text" type="text" placeholder="Text Input">
-						</p>
-						<p>
-							<label for="input__password">Password</label>
-							<input id="input__password" type="password" placeholder="Type your Password" autocomplete="current-password">
-						</p>
-						<p>
-							<label for="input__webaddress">Web Address</label>
-							<input id="input__webaddress" type="url" placeholder="https://yoursite.com">
-						</p>
-						<p>
-							<label for="input__emailaddress">Email Address</label>
-							<input id="input__emailaddress" type="email" placeholder="name@email.com" autocomplete="email">
-						</p>
-						<p>
-							<label for="input__phone">Phone Number</label>
-							<input id="input__phone" type="tel" placeholder="(999) 999-9999">
-						</p>
-						<p>
-							<label for="input__search">Search</label>
-							<input id="input__search" type="search" placeholder="Enter Search Term">
-						</p>
-						<p>
-							<label for="input__text2">Number Input</label>
-							<input id="input__text2" type="number" placeholder="Enter a Number">
-						</p>
-						<p>
-							<label for="input__file">File Input</label>
-							<input id="input__file" type="file">
-						</p>
-					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__select">
-						<legend>Select menus</legend>
-						<p>
-							<label for="select">Select</label>
-							<select id="select">
-								<optgroup label="Option Group">
-									<option>Option One</option>
-									<option>Option Two</option>
-									<option>Option Three</option>
-								</optgroup>
+			<section id="forms">
+				<h2>Forms</h2>
+				<p>Form inputs with consistent styling and state management.</p>
+
+				<article data-desktop-col="8">
+					<h3>Text Inputs</h3>
+					<div style="display: flex; flex-direction: column; gap: var(--space-4);">
+						<div>
+							<label for="input-default">Default Input</label>
+							<input type="text" id="input-default" placeholder="Enter text...">
+						</div>
+						<div>
+							<label for="input-error">Error State</label>
+							<input type="text" id="input-error" aria-invalid="true" value="Invalid value">
+							<p class="error-message">This field has an error.</p>
+						</div>
+						<div>
+							<label for="input-disabled">Disabled</label>
+							<input type="text" id="input-disabled" disabled value="Cannot edit">
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8">
+					<h3>Input Sizes</h3>
+					<div style="display: flex; flex-direction: column; gap: var(--space-3);">
+						<div>
+							<label for="input-sm">Small Input</label>
+							<input type="text" id="input-sm" data-size="sm" placeholder="Small input">
+						</div>
+						<div>
+							<label for="input-default-size">Default Input</label>
+							<input type="text" id="input-default-size" placeholder="Default input">
+						</div>
+						<div>
+							<label for="input-lg">Large Input</label>
+							<input type="text" id="input-lg" data-size="lg" placeholder="Large input">
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8">
+					<h3>Select</h3>
+					<div style="display: flex; flex-direction: column; gap: var(--space-3);">
+						<div>
+							<label for="select-single">Single Select</label>
+							<select id="select-single">
+								<option value="">Choose an option...</option>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
 							</select>
-						</p>
-						<p>
-							<label for="select_multiple">Select (multiple)</label>
-							<select id="select_multiple" multiple>
-								<optgroup label="Option Group">
-									<option>Option One</option>
-									<option>Option Two</option>
-									<option>Option Three</option>
-								</optgroup>
+						</div>
+						<div>
+							<label for="select-multiple">Multiple Select</label>
+							<select id="select-multiple" multiple>
+								<option value="1">Option 1</option>
+								<option value="2">Option 2</option>
+								<option value="3">Option 3</option>
+								<option value="4">Option 4</option>
 							</select>
-						</p>
-					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__checkbox">
+							<p class="helper-text">Hold Ctrl/Cmd to select multiple.</p>
+						</div>
+					</div>
+				</article>
+
+				<article data-desktop-col="8">
+					<h3>Textarea</h3>
+					<label for="textarea-demo">Message</label>
+					<textarea id="textarea-demo" rows="4" placeholder="Enter your message..."></textarea>
+				</article>
+
+				<article data-desktop-col="8">
+					<h3>Checkboxes & Radios</h3>
+					<fieldset>
 						<legend>Checkboxes</legend>
-						<p>Nested <code>label &gt; input</code></p>
 						<ul>
-							<li>
-								<label><input name="checkbox-nested" type="checkbox" checked> Choice A</label>
-							</li>
-							<li>
-								<label><input name="checkbox-nested" type="checkbox"> Choice B</label>
-							</li>
-							<li>
-								<label><input name="checkbox-nested" type="checkbox"> Choice C</label>
-							</li>
-						</ul>
-						<p>Sibling <code>input + label</code></p>
-						<ul>
-							<li>
-								<input id="checkbox4" name="checkbox-sibling" type="checkbox" checked>
-								<label for="checkbox4">Choice A</label>
-							</li>
-							<li>
-								<input id="checkbox5" name="checkbox-sibling" type="checkbox">
-								<label for="checkbox5">Choice B</label>
-							</li>
-							<li>
-								<input id="checkbox6" name="checkbox-sibling" type="checkbox">
-								<label for="checkbox6">Choice C</label>
-							</li>
+							<li><input type="checkbox" id="check1" checked><label for="check1">Option A (checked)</label></li>
+							<li><input type="checkbox" id="check2"><label for="check2">Option B</label></li>
+							<li><input type="checkbox" id="check3" disabled><label for="check3">Option C (disabled)</label></li>
 						</ul>
 					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__radio">
-						<legend>Radio buttons</legend>
-						<p>Nested <code>label &gt; input</code></p>
+					<fieldset>
+						<legend>Radio Buttons</legend>
 						<ul>
-							<li>
-								<label><input name="radio-nested" type="radio" checked> Option 1</label>
-							</li>
-							<li>
-								<label><input name="radio-nested" type="radio"> Option 2</label>
-							</li>
-							<li>
-								<label><input name="radio-nested" type="radio"> Option 3</label>
-							</li>
-						</ul>
-						<p>Sibling <code>input + label</code></p>
-						<ul>
-							<li>
-								<input id="radio4" name="radio-sibling" type="radio" checked>
-								<label for="radio4">Option 1</label>
-							</li>
-							<li>
-								<input id="radio5" name="radio-sibling" type="radio">
-								<label for="radio5">Option 2</label>
-							</li>
-							<li>
-								<input id="radio6" name="radio-sibling" type="radio">
-								<label for="radio6">Option 3</label>
-							</li>
+							<li><input type="radio" name="radio-demo" id="radio1" checked><label for="radio1">Choice 1</label></li>
+							<li><input type="radio" name="radio-demo" id="radio2"><label for="radio2">Choice 2</label></li>
+							<li><input type="radio" name="radio-demo" id="radio3"><label for="radio3">Choice 3</label></li>
 						</ul>
 					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__textareas">
-						<legend>Textareas</legend>
-						<p>
-							<label for="textarea">Textarea</label>
-							<textarea id="textarea" rows="8" cols="48" placeholder="Enter your message here"></textarea>
-						</p>
-					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__html5">
-						<legend>HTML5 inputs</legend>
-						<p>
-							<label for="ic">Color input</label>
-							<input type="color" id="ic" value="#000000">
-						</p>
-						<p>
-							<label for="in">Number input</label>
-							<input type="number" id="in" min="0" max="10" value="5">
-						</p>
-						<p>
-							<label for="ir">Range input</label>
-							<input type="range" id="ir" value="10">
-						</p>
-						<p>
-							<label for="idd">Date input</label>
-							<input type="date" id="idd" value="1970-01-01">
-						</p>
-						<p>
-							<label for="idm">Month input</label>
-							<input type="month" id="idm" value="1970-01">
-						</p>
-						<p>
-							<label for="idw">Week input</label>
-							<input type="week" id="idw" value="1970-W01">
-						</p>
-						<p>
-							<label for="idt">Datetime input</label>
-							<input type="datetime-local" id="idt" value="1970-01-01T00:00">
-						</p>
-						<p>
-							<label for="idtl">Datetime-local input</label>
-							<input type="datetime-local" id="idtl" value="1970-01-01T00:00">
-						</p>
-						<p>
-							<label for="idl">Datalist</label>
-							<input type="text" id="idl" list="example-list">
-							<datalist id="example-list">
-								<option value="Example #1"></option>
-								<option value="Example #2"></option>
-								<option value="Example #3"></option>
-							</datalist>
-						</p>
-					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-					<fieldset id="interactive__action">
-						<legend>Action buttons</legend>
-						<p>
-							<input type="submit" value="<input type=submit>">
-							<input type="button" value="<input type=button>">
-							<input type="reset" value="<input type=reset>">
-							<input type="submit" value="<input disabled>" disabled>
-						</p>
-						<p>
-							<button type="submit">&lt;button type=submit&gt;</button>
-							<button type="button">&lt;button type=button&gt;</button>
-							<button type="reset">&lt;button type=reset&gt;</button>
-							<button type="button" disabled>&lt;button disabled&gt;</button>
-						</p>
-					</fieldset>
-					<p><a href="#top">[Top]</a></p>
-				</form>
+				</article>
+
+				<article data-desktop-col="8">
+					<h3>Range & Color</h3>
+					<div style="display: flex; flex-direction: column; gap: var(--space-4);">
+						<div>
+							<label for="range-demo">Volume</label>
+							<input type="range" id="range-demo" min="0" max="100" value="50">
+						</div>
+						<div>
+							<label for="color-demo">Color</label>
+							<input type="color" id="color-demo" value="#0d47a1">
+						</div>
+						<div>
+							<label for="file-demo">File Upload</label>
+							<input type="file" id="file-demo">
+						</div>
+					</div>
+				</article>
 			</section>
+
 			<!-- ============================================
-			     ACCESSIBILITY
-			     Accessibility features and utilities
+			     CARDS SECTION
 			     ============================================ -->
-			<section id="utilities">
-				<header>
-					<h2>Accessibility</h2>
-					<p>ETS Framework is classless by design. The only class is <code>.visually-hidden</code> — an accessibility requirement with no semantic HTML equivalent.</p>
-				</header>
+			<section id="cards">
+				<h2>Cards</h2>
+				<p>Cards are used to group related content.</p>
 
-				<article id="utilities__visually-hidden">
-					<h3>.visually-hidden</h3>
-					<p>The <code>.visually-hidden</code> class hides content visually but keeps it accessible to screen readers. Used for skip navigation links at the top of this page.</p>
-					<p><strong>Try it:</strong> Press the Tab key when this page loads to see the skip links appear.</p>
-					<pre role="region" aria-label="Skip link code example" tabindex="0"><code>&lt;a href="#main" class="visually-hidden"&gt;Skip to main content&lt;/a&gt;</code></pre>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article data-desktop-col="5" data-tablet-col="6">
+					<h3>Basic Card</h3>
+					<p>This is a standard card using the <code>&lt;article&gt;</code> element. It has padding, rounded corners, and a subtle shadow.</p>
 				</article>
 
-				<article id="utilities__dark-mode">
-					<h3>Automatic dark mode</h3>
-					<p>ETS Framework automatically adapts to your system's color scheme preference using <code>prefers-color-scheme</code>.</p>
-					<p><strong>Try it:</strong> Change your operating system's theme from light to dark mode to see the framework adapt instantly.</p>
-					<p>No classes or JavaScript required—it's built into the CSS and respects user preferences.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article data-desktop-col="5" data-tablet-col="6" data-clickable>
+					<h3>Clickable Card</h3>
+					<p>Add <code>data-clickable</code> to enable hover effects for interactive cards.</p>
 				</article>
 
-				<article id="utilities__keyboard">
-					<h3>Keyboard navigation</h3>
-					<p>All interactive elements in ETS Framework are fully keyboard accessible following WCAG 2.1 Level A requirements.</p>
+				<article data-desktop-col="5" data-tablet-col="6">
+					<div class="card-header">
+						<h4 style="margin: 0;">Card with Header</h4>
+					</div>
+					<p>Cards can have distinct header and footer sections with different background colors.</p>
+					<div class="card-footer" style="display: flex; justify-content: flex-end; gap: var(--space-2);">
+						<button data-variant="ghost" data-size="sm">Cancel</button>
+						<button data-size="sm">Save</button>
+					</div>
+				</article>
 
-					<h4>Navigation keys</h4>
-					<dl>
-						<dt><kbd>Tab</kbd></dt>
-						<dd>Move forward through interactive elements</dd>
-
-						<dt><kbd>Shift</kbd> + <kbd>Tab</kbd></dt>
-						<dd>Move backward through interactive elements</dd>
-
-						<dt><kbd>Enter</kbd></dt>
-						<dd>Activate links, buttons, and submit forms</dd>
-
-						<dt><kbd>Space</kbd></dt>
-						<dd>Activate buttons and toggle checkboxes/details</dd>
-
-						<dt><kbd>Arrow Keys</kbd></dt>
-						<dd>Navigate within radio button groups and select menus</dd>
-
-						<dt><kbd>Esc</kbd></dt>
-						<dd>Close dialogs and modals</dd>
-					</dl>
-
-					<h4>Focus indicators</h4>
-					<p>All focusable elements display a clear 3px outline in the accent color with 2px offset when focused via keyboard.</p>
-					<p><strong>Try it:</strong> Press Tab repeatedly on this page to see focus indicators on all interactive elements.</p>
-					<footer>
-						<p><a href="#top">[Top]</a></p>
-					</footer>
+				<article data-desktop-col="5" data-tablet-col="6" data-loading style="min-height: 150px;">
+					<h3>Loading Card</h3>
+					<p>This card is in a loading state.</p>
 				</article>
 			</section>
+
+			<!-- ============================================
+			     BADGES SECTION
+			     ============================================ -->
+			<section id="badges">
+				<h2>Badges & Status</h2>
+				<p>Badges for labels, tags, and status indicators.</p>
+
+				<article>
+					<h3>Badge Variants</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<span data-badge>Default</span>
+						<span data-badge="success">Success</span>
+						<span data-badge="warning">Warning</span>
+						<span data-badge="danger">Danger</span>
+						<span data-badge="info">Info</span>
+						<span data-badge="brand">Brand</span>
+					</div>
+					<div class="code-example">
+						<code>&lt;span data-badge="success"&gt;Success&lt;/span&gt;</code>
+					</div>
+				</article>
+
+				<article>
+					<h3>Badge Sizes</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<span data-badge data-size="sm">Small</span>
+						<span data-badge>Default</span>
+						<span data-badge data-size="lg">Large</span>
+					</div>
+				</article>
+
+				<article>
+					<h3>Status Dots</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: center;">
+						<span style="display: flex; align-items: center; gap: var(--space-2);">
+							<span class="status-dot" data-status="success"></span> Online
+						</span>
+						<span style="display: flex; align-items: center; gap: var(--space-2);">
+							<span class="status-dot" data-status="warning"></span> Away
+						</span>
+						<span style="display: flex; align-items: center; gap: var(--space-2);">
+							<span class="status-dot" data-status="danger"></span> Offline
+						</span>
+						<span style="display: flex; align-items: center; gap: var(--space-2);">
+							<span class="status-dot" data-status="success" data-pulse></span> Live
+						</span>
+					</div>
+					<div class="code-example">
+						<code>&lt;span class="status-dot" data-status="success" data-pulse&gt;&lt;/span&gt;</code>
+					</div>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     TABLES SECTION
+			     ============================================ -->
+			<section id="tables">
+				<h2>Tables</h2>
+				<p>Data tables with hover states and responsive scrolling.</p>
+
+				<article>
+					<h3>Basic Table</h3>
+					<div class="table-responsive">
+						<table>
+							<thead>
+								<tr>
+									<th>Name</th>
+									<th>Role</th>
+									<th>Status</th>
+									<th>Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Jane Cooper</td>
+									<td>Administrator</td>
+									<td><span data-badge="success">Active</span></td>
+									<td>
+										<button data-variant="ghost" data-size="sm">Edit</button>
+									</td>
+								</tr>
+								<tr>
+									<td>John Smith</td>
+									<td>Editor</td>
+									<td><span data-badge="success">Active</span></td>
+									<td>
+										<button data-variant="ghost" data-size="sm">Edit</button>
+									</td>
+								</tr>
+								<tr>
+									<td>Sarah Johnson</td>
+									<td>Viewer</td>
+									<td><span data-badge="warning">Pending</span></td>
+									<td>
+										<button data-variant="ghost" data-size="sm">Edit</button>
+									</td>
+								</tr>
+								<tr>
+									<td>Mike Brown</td>
+									<td>Editor</td>
+									<td><span data-badge="danger">Inactive</span></td>
+									<td>
+										<button data-variant="ghost" data-size="sm">Edit</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     AVATARS SECTION
+			     ============================================ -->
+			<section id="avatars">
+				<h2>Avatars</h2>
+				<p>User avatars with size variants and stacking.</p>
+
+				<article>
+					<h3>Avatar Sizes</h3>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); align-items: center;">
+						<span class="avatar" data-size="sm">SM</span>
+						<span class="avatar">MD</span>
+						<span class="avatar" data-size="lg">LG</span>
+						<span class="avatar" data-size="xl">XL</span>
+					</div>
+				</article>
+
+				<article>
+					<h3>Avatar Stack</h3>
+					<div class="component-demo">
+						<div class="avatar-stack">
+							<span class="avatar" style="background: var(--success);">JC</span>
+							<span class="avatar" style="background: var(--info);">JS</span>
+							<span class="avatar" style="background: var(--warning);">SJ</span>
+							<span class="avatar" style="background: var(--danger);">MB</span>
+							<span class="avatar">+3</span>
+						</div>
+					</div>
+					<div class="code-example">
+						<code>&lt;div class="avatar-stack"&gt;
+  &lt;span class="avatar"&gt;JC&lt;/span&gt;
+  &lt;span class="avatar"&gt;JS&lt;/span&gt;
+  ...
+&lt;/div&gt;</code>
+					</div>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     LAYOUT SECTION
+			     ============================================ -->
+			<section id="layout">
+				<h2>Layout</h2>
+				<p>The app layout consists of a sidebar and main content area.</p>
+
+				<article>
+					<h3>App Layout Structure</h3>
+					<pre><code>&lt;div class="app-layout"&gt;
+  &lt;aside&gt;
+    &lt;header&gt;...&lt;/header&gt;
+    &lt;div class="aside-content"&gt;
+      &lt;nav&gt;...&lt;/nav&gt;
+    &lt;/div&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+  &lt;/aside&gt;
+
+  &lt;main&gt;
+    &lt;header class="app-header"&gt;...&lt;/header&gt;
+    &lt;section&gt;...&lt;/section&gt;
+    &lt;footer&gt;...&lt;/footer&gt;
+  &lt;/main&gt;
+&lt;/div&gt;</code></pre>
+				</article>
+
+				<article>
+					<h3>Collapsible Sidebar</h3>
+					<p>Toggle the sidebar with JavaScript:</p>
+					<div class="code-example">
+						<code>ETS.sidebar.toggle(); // Toggle
+ETS.sidebar.collapse(); // Collapse
+ETS.sidebar.expand(); // Expand</code>
+					</div>
+					<button onclick="ETS.sidebar.toggle()">Toggle Sidebar</button>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     LOADING SECTION
+			     ============================================ -->
+			<section id="loading">
+				<h2>Loading States</h2>
+				<p>Skeleton loading states for content placeholders.</p>
+
+				<article>
+					<h3>Loading Attribute</h3>
+					<p>Add <code>data-loading</code> to any element to show a skeleton shimmer:</p>
+					<div class="component-demo" style="display: flex; flex-direction: column; gap: var(--space-3);">
+						<div data-loading style="height: 40px; border-radius: var(--radius-md);"></div>
+						<div data-loading style="height: 100px; border-radius: var(--radius-lg);"></div>
+						<button data-loading>Loading Button</button>
+					</div>
+					<div class="code-example">
+						<code>&lt;div data-loading style="height: 100px;"&gt;&lt;/div&gt;</code>
+					</div>
+				</article>
+
+				<article>
+					<h3>Progress Bar</h3>
+					<div class="component-demo">
+						<progress value="65" max="100">65%</progress>
+						<p class="helper-text">65% complete</p>
+					</div>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     ACCESSIBILITY SECTION
+			     ============================================ -->
+			<section id="accessibility">
+				<h2>Accessibility</h2>
+				<p>Built-in accessibility features for WCAG 2.1 AA compliance.</p>
+
+				<article>
+					<h3>Focus Styles</h3>
+					<p>All interactive elements have visible focus indicators. Tab through this page to see them in action.</p>
+					<div class="component-demo" style="display: flex; gap: var(--space-3); flex-wrap: wrap; align-items: center;">
+						<button>Focus me</button>
+						<a href="#accessibility">Link</a>
+						<label for="focus-demo" class="sr-only">Demo input</label>
+						<input type="text" id="focus-demo" placeholder="Input">
+					</div>
+				</article>
+
+				<article>
+					<h3>Screen Reader Announcements</h3>
+					<p>Use <code>ETS.announce()</code> to announce changes to screen readers:</p>
+					<div class="code-example">
+						<code>ETS.announce('Form submitted successfully');
+ETS.announce('Error: Please check your input', 'assertive');</code>
+					</div>
+					<button onclick="ETS.announce('This message was announced to screen readers')">Test Announcement</button>
+				</article>
+
+				<article>
+					<h3>Reduced Motion</h3>
+					<p>Animations are automatically disabled when <code>prefers-reduced-motion: reduce</code> is set in the user's system preferences.</p>
+				</article>
+
+				<article>
+					<h3>High Contrast Mode</h3>
+					<p>The high contrast theme provides maximum contrast ratios for users with low vision. All colors become pure black/white with yellow accents, and shadows are replaced with solid borders.</p>
+				</article>
+			</section>
+
+			<!-- ============================================
+			     FOOTER
+			     ============================================ -->
+			<footer>
+				<p>ETS-TX v26.0α · <a href="https://github.com/ets-tx/ets-framework">GitHub</a> · MIT License</p>
+				<p>© 2025 ETS-TX (Bryan A Counts)</p>
+			</footer>
 		</main>
+	</div>
 
-		<!-- ============================================
-	     FOOTER
+	<!-- ============================================
+	     MOBILE NAVIGATION
 	     ============================================ -->
-		<footer aria-label="Site footer">
-			<p>Based on <a href="https://github.com/cbracco/html5-test-page" target="_blank" rel="noopener noreferrer">HTML5-test-page</a> by cbracco.</p>
-			<p>Framework: <a href="https://github.com/ets-tx/ets-framework" target="_blank" rel="noopener noreferrer">ETS Framework</a> by ETS-TX (Bryan A Counts)</p>
-		</footer>
+	<nav class="mobile-nav" aria-label="Mobile navigation">
+		<ul>
+			<li class="nav-menu-btn">
+				<button data-mobile-menu-toggle aria-label="Open menu" aria-expanded="false">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+					Menu
+				</button>
+			</li>
+			<li>
+				<button aria-label="Search">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+					Search
+				</button>
+			</li>
+			<li>
+				<a href="#overview" aria-current="page">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+					Home
+				</a>
+			</li>
+			<li>
+				<button aria-label="Notifications">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+					<span class="nav-badge">3</span>
+					Alerts
+				</button>
+			</li>
+			<li>
+				<button type="button" aria-label="Profile">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+					Profile
+				</button>
+			</li>
+		</ul>
+	</nav>
 
-		<!-- ============================================
-	     INSTANT.PAGE - Just-in-Time Preloading
-	     Preloads pages right before user clicks (65ms hover on desktop, touchstart on mobile)
-	     Makes pages feel instant even on 3G. Only 1KB. MIT License.
-	     https://instant.page/
+	<!-- ============================================
+	     JAVASCRIPT
 	     ============================================ -->
-		<script src="https://instant.page/5.2.0" type="module" integrity="sha384-jnZyxPjiipYXnSU0ygqeac2q7CVYMbh84q0uHVRRxEtvFPiQYbXWUorga2aqZJ0z"></script>
-	</body>
+	<script src="app-framework.js"></script>
+</body>
 </html>
